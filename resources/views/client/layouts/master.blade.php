@@ -35,26 +35,19 @@
     <!-- Website Title -->
     <title>@yield('title')</title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('/theme_client/cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css') }}">
+    <link href="{{ asset('theme_client/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet"
-        href="{{ asset('/theme_client/home.css') }}">
-    <style>
-
-    </style>
+    href="{{ asset('/theme_client/home.css') }}">
 
     <!-- Favicon  -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
     <link rel="icon" href="images/favicon.ico">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     @yield('css')
 </head>
 
-<body class="page-template ltr" data-theme-color="#0068e1"
-    style="--color-primary: #0068e1;
-            --color-primary-hover: #0055b8;
-            --color-primary-transparent: rgba(0, 104, 225, 0.8);
-            --color-primary-transparent-lite: rgba(0, 104, 225, 0.3);">
-
+<body class="page-template ltr">
     <div class="wrapper home-page" id="app">
         @include('client.layouts.header')
         <div class="page-section">
@@ -62,13 +55,8 @@
         </div>
 
         @include('client.layouts.footer')
-        <div class="footer-tabbar-wrap">
-        </div>
     </div>
-
-    <script type="text/javascript">
-
-    </script>
+    <script src="{{ asset('theme_client/bootstrap.min.js') }}"></script>
     @yield('script')
 </body>
 

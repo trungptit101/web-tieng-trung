@@ -12,8 +12,18 @@ class HomeController extends Controller
         return view('client.home');
     }
 
-    public function category()
+    public function profile()
     {
-        return view('client.category');
+        return view('client.profile');
+    }
+
+    public function courses()
+    {
+        return view('client.courses');
+    }
+
+    public function coursesDetail()
+    {
+        return view('client.courses-detail');
     }
 }
