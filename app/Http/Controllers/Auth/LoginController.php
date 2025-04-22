@@ -6,6 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Order;
+use App\Notifications\SendMailRegisterUserOTP;
+use Illuminate\Support\Facades\Notification;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -39,8 +47,40 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
     public function loginClient(Request $request)
     {
         return view('client.login.index');
     }
+
+    public function registerClient(Request $request)
+    {
+        return view('client.register.index');
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentialsEmail = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        if (Auth::attempt($credentialsEmail)) {
+            return view('admin.dashboard.index');
+        }
+
+        return response()->json([
+            'loginStatus' => false,
+        ]);
+    }
+
 }

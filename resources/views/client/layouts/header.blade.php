@@ -1,6 +1,6 @@
 <header>
     <div class="logo">
-        <img src="{{ asset('/theme_client/images/logo.jpg') }}" >
+        <img src="{{ asset('/theme_client/images/logo.jpg') }}">
     </div>
     <nav>
         <a href="#">Trang chủ</a>
@@ -14,22 +14,12 @@
 
 <div class="carousel-container">
     <div class="carousel-track">
+        @foreach ($banners as $banner)
         <div class="carousel-slide">
             <img
-                src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/434283029_122195628014001934_616319980032949590_n.png?stp=dst-png_s960x960&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dAb1TdwB9pgQ7kNvwGtDrGI&_nc_oc=Adn4BGK60J2gSNFLVwbfgK0Cce0gtECdW7j33zFOBf84fCuYTgLtpeVsrsnzMonuyeY&_nc_zt=23&_nc_ht=scontent.fhan5-9.fna&_nc_gid=GjmYgmTJGvA5d_Ktlf4UNQ&oh=00_AfHqosnUL-og1ZwMrnLheFUL9lbyJYJyUpu-IrCeTiwbkA&oe=68045376">
+                src="{{ $banner->image }}">
         </div>
-        <div class="carousel-slide">
-            <img
-                src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/434283029_122195628014001934_616319980032949590_n.png?stp=dst-png_s960x960&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dAb1TdwB9pgQ7kNvwGtDrGI&_nc_oc=Adn4BGK60J2gSNFLVwbfgK0Cce0gtECdW7j33zFOBf84fCuYTgLtpeVsrsnzMonuyeY&_nc_zt=23&_nc_ht=scontent.fhan5-9.fna&_nc_gid=GjmYgmTJGvA5d_Ktlf4UNQ&oh=00_AfHqosnUL-og1ZwMrnLheFUL9lbyJYJyUpu-IrCeTiwbkA&oe=68045376">
-        </div>
-        <div class="carousel-slide">
-            <img
-                src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/434283029_122195628014001934_616319980032949590_n.png?stp=dst-png_s960x960&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dAb1TdwB9pgQ7kNvwGtDrGI&_nc_oc=Adn4BGK60J2gSNFLVwbfgK0Cce0gtECdW7j33zFOBf84fCuYTgLtpeVsrsnzMonuyeY&_nc_zt=23&_nc_ht=scontent.fhan5-9.fna&_nc_gid=GjmYgmTJGvA5d_Ktlf4UNQ&oh=00_AfHqosnUL-og1ZwMrnLheFUL9lbyJYJyUpu-IrCeTiwbkA&oe=68045376">
-        </div>
-        <div class="carousel-slide">
-            <img
-                src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/434283029_122195628014001934_616319980032949590_n.png?stp=dst-png_s960x960&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dAb1TdwB9pgQ7kNvwGtDrGI&_nc_oc=Adn4BGK60J2gSNFLVwbfgK0Cce0gtECdW7j33zFOBf84fCuYTgLtpeVsrsnzMonuyeY&_nc_zt=23&_nc_ht=scontent.fhan5-9.fna&_nc_gid=GjmYgmTJGvA5d_Ktlf4UNQ&oh=00_AfHqosnUL-og1ZwMrnLheFUL9lbyJYJyUpu-IrCeTiwbkA&oe=68045376">
-        </div>
+        @endforeach
     </div>
 </div>
 
@@ -86,7 +76,7 @@
     }
 
     function startAutoSlide() {
-        autoSlideInterval = setInterval(autoSlide, 300000);
+        autoSlideInterval = setInterval(autoSlide, 3000);
     }
 
     function stopAutoSlide() {

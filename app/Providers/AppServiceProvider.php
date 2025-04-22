@@ -13,7 +13,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        view()->composer('client.layouts.header', function ($view) {
+            $banners = \DB::table('banners')
+                ->select('id', 'image')
+                ->get();
+
+            $view->with([
+                'banners' => $banners,
+            ]);
+        });
     }
 
     /**

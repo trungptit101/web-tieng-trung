@@ -1,0 +1,31 @@
+<aside class="main-sidebar sidebar-dark-info elevation-4">
+    <a href="/" class="brand-link" style="text-align: center">
+        <img src="{{ asset('/logo.jpg') }}" style="width: 100%; max-width: 60px; border-radius: 50%">
+        HUA HUA
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="{{ route('banners.index') }}" class="nav-link {{ Route::is('banners.*')? 'active' : '' }}">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>
+                            Quản lý ảnh
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('pages.introduce.detail') }}" class="nav-link {{ Route::is('pages.*')? 'active' : '' }}">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>
+                            Trang giới thiệu HUA HUA
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>

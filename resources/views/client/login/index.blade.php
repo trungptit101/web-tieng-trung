@@ -2,81 +2,185 @@
 @section('title', 'Đăng nhập')
 @section('css')
 <style>
+    .carousel-container {
+        display: none;
+    }
+
+    .login-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 50vh;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        overflow: hidden;
+    }
+
+    .login-container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 450px;
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .login-container h2 {
+        color: #fff;
+        margin-bottom: 25px;
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .input-group {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 12px 15px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .input-group input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .input-group input:focus {
+        background: rgba(255, 255, 255, 0.3);
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .input-group label {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .input-group input:focus+label,
+    .input-group input:not(:placeholder-shown)+label {
+        top: -10px;
+        left: 10px;
+        font-size: 12px;
+        color: #fff;
+        background: #2a5298;
+        padding: 0 5px;
+        border-radius: 5px;
+    }
+
+    .login-container button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .login-container button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    }
+
+    .forgot-password {
+        margin-top: 20px;
+    }
+
+    .forgot-password a {
+        color: #feca57;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .forgot-password a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+        .login-container {
+            margin: 15px;
+            padding: 25px;
+            max-width: 90%;
+        }
+
+        .login-container h2 {
+            font-size: 24px;
+        }
+
+        .login-container button {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            overflow: hidden;
+        }
+    }
 </style>
 @endsection
 
 @section('main')
-<div style="background-color: rgb(208, 1, 27);">
-    <div style="
-        background-image: url('/images/banner-login.jpg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-        min-height: 500px;
-        display: flex;
-        align-items: center;
-        padding: 3% 0;
-        justify-content: flex-end;">
-        <div class="modal-content rounded">
-            <div class="col-inner login-form">
-                <div class="d-sm-none pb-4"><button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button></div>
-                <div class="site-logo text-center d-sm-none"><a href="https://sanpay.vn"><img src="{{ asset('/images/logo-sanpay2.png') }}" alt="sanpay" class="img-fluid"></a></div>
-                <div class="modal-header">
-                    <h5 class="modal-title modal-title-1">
-                        <span>Đăng nhập</span>
-                    </h5>
-                    <h5 class="modal-title modal-title-2 d-none">
-                        <span class="form-come-back" onclick="formBack()"><i aria-hidden="true" class="fa fa-arrow-left"></i></span>
-                        <span> Đăng nhập</span>
-                    </h5>
-                    <!-- <button type="button" data-dismiss="modal" aria-label="Close" class="close d-none d-sm-block"><span aria-hidden="true">×</span></button> -->
-                </div>
-                <div class="modal-body">
-                    <div class="container" style="margin-top: 10px;">
-                        <form method="POST" action="" id="login-form">
-                            <div class="form-group">
-                                <label for="">Email / Số điện thoại<span>*</span></label>
-                                <input type="text" name="username" placeholder="Nhập Email" class="form-control">
-                            </div>
-                            <div class="form-group password">
-                                <label for="">Mật khẩu<span>*</span></label>
-                                <input type="password" name="password" minlength="6" placeholder="Nhập mật khẩu" class="form-control">
-                            </div>
-                            <div class="form-group" style="margin-top: 10px; margin-bottom: 5px;">
-                                <!-- <button type="button" onclick="clickBtnCheckUserName()" class="btn btn-primary btn-block btn-check-login">
-                                    <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-                                    <span>TIẾP TỤC</span>
-                                </button> -->
-                                <button type="button" onclick="handleLogin()" class="btn btn-primary btn-block btn-login">
-                                    <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-                                    <span>ĐĂNG NHẬP</span>
-                                </button>
-                            </div>
-                            <div style="font-size: .85rem; cursor: pointer; display: flex; justify-content: space-between;">
-                                <a class="hZ5QQO" href="">Quên mật khẩu</a>
-                                <a class="hZ5QQO" href="">Đăng ký</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+<div class="login-page">
+    <div class="login-container">
+        <h2>Đăng Nhập</h2>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <div class="input-group">
+                <input type="email" name="email" class="@error('email') is-invalid @enderror" placeholder=" " required autocomplete="email" autofocus>
+                <label for="email">Tên đăng nhập</label>
             </div>
-
-            <input type="hidden" name="valid_otp" value="">
-            <div class="awPXwj">
-                <div class="NleHE1">
-                    <div class="rEVZJ2"></div><span class="EMof35">hoặc</span>
-                    <div class="rEVZJ2"></div>
-                </div>
-                <div class="SR5mQ0 social-login">
-                    <a class="eADVqX b7kM6N KIySnv facebook" href="">
-                        <div class="zwXUkg">
-                            <i class="lab la-facebook-f"></i>
-                        </div>
-                        <div class="">Facebook</div>
-                    </a>
-                </div>
+            <div class="input-group">
+                <input type="password" name="password" class="@error('password') is-invalid @enderror" placeholder=" " required autocomplete="current-password">
+                <label for="password">Mật khẩu</label>
             </div>
-        </div>
+            <button type="submit">Đăng Nhập</button>
+            <div class="forgot-password">
+                <a href="#">Quên mật khẩu?</a>
+            </div>
+        </form>
     </div>
 </div>
 @endsection

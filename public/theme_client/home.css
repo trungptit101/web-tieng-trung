@@ -14,6 +14,13 @@ body {
     line-height: 1.6;
 }
 
+button:focus,
+button:hover,
+button:focus-visible {
+    outline: none !important;
+    border-color: #fff !important;
+}
+
 /* Header */
 header {
     display: flex;
