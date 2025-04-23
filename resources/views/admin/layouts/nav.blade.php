@@ -13,15 +13,31 @@
                     <a href="{{ route('banners.index') }}" class="nav-link {{ Route::is('banners.*')? 'active' : '' }}">
                         <i class="nav-icon fas fa-image"></i>
                         <p>
-                            Quản lý ảnh
+                            Quản Lý Banner
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('pages.introduce.detail') }}" class="nav-link {{ Route::is('pages.*')? 'active' : '' }}">
-                        <i class="nav-icon fas fa-image"></i>
+                        <i class="nav-icon fas fa-newspaper"></i>
                         <p>
-                            Trang giới thiệu HUA HUA
+                            Trang Giới Thiệu HUA HUA
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('teachers.index') }}" class="nav-link {{ Route::is('teachers.*')? 'active' : '' }}">
+                        <i class="nav-icon fas fa-person-booth"></i>
+                        <p>
+                            Quản Lý Giáo Viên
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('videos.student.index') }}" class="nav-link {{ Route::is('videos.student.*')? 'active' : '' }}">
+                        <i class="nav-icon fas fa-play"></i>
+                        <p>
+                            Quản Lý Video Học Viên
                         </p>
                     </a>
                 </li>

@@ -101,6 +101,14 @@
         font-weight: 600;
     }
 
+    .video-section-container {
+        background-image: url('theme_client/images/Layer-11-1.jpg');
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: 50% 50%;
+        padding-bottom: 20px;
+    }
+
     .video-section .video-title {
         font-weight: bold;
         padding: 30px 0;
@@ -140,7 +148,7 @@
 
     .video-item iframe {
         width: 100%;
-        height: 200px;
+        height: 250px;
         border: none;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
@@ -266,16 +274,25 @@
         padding: 10px;
         font-size: 18px;
     }
+
+    .content-introduce {
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
 </style>
 @endsection
 @section('main')
 
+@if(isset($page))
 <div class="video-container">
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-6">
                 <iframe
-                    src="https://youtu.be/Ue1F8eh3uVo?si=M3TJWpTkmLlGw09s"
+                    src="{{ $page->link }}"
                     title="YouTube video player"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -286,16 +303,12 @@
             <div class="col-12 col-md-6 col-lg-6 video-right">
                 <div class="col medium-6 small-12 large-6">
                     <div class="col-inner text-left">
-                        <h2 style="text-align: left;"><span style="color: #F15928;"><strong>GIỚI THIỆU VỀ HOU HOU</strong></span></h2>
+                        <h2 style="text-align: left;"><span style="color: #F15928; text-transform: uppercase;"><strong>{{ $page->title }}</strong></span></h2>
                         <div class="is-divider divider clearfix"></div>
-                        <div class="gap-element-introduce clearfix" style="display:block; height:auto;">
+                        <div class="content-introduce">
+                            {!! $page->content !!}
                         </div>
-
-                        <p style="margin-bottom: 2rem;">
-                            Trung tâm tiếng Trung Hua Hua tự hào là địa chỉ uy tín dành cho những ai đang theo đuổi hành trình chinh phục tiếng Trung.
-                            Với đội ngũ giáo viên bản ngữ và Việt Nam giàu kinh nghiệm, phương pháp giảng dạy trực quan, sinh động, chúng tôi mang đến môi trường học tập chất lượng – hiệu quả – truyền cảm hứng.
-                        </p>
-                        <a href="/gioi-thieu/" target="_self" class="btn-more">
+                        <a href="/gioi-thieu-trung-tam-hua-hua" target="_self" class="btn-more">
                             <span>XEM THÊM</span>
                         </a>
                     </div>
@@ -304,91 +317,36 @@
         </div>
     </div>
 </div>
+@endif
 
 <div class="container">
     <div class="section-title">20+ <span style="color: #25366a">GIÁO VIÊN TÀI NĂNG TÂM HUYẾT</span></div>
 
     <div class="teacher-container">
-        <!-- Teacher 1 -->
+        @foreach($teachers as $teacher)
         <div class="teacher-card">
-            <img src="{{ asset('theme_client/images/teachers/teacher1.png') }}" alt="Banze Abdulai" class="teacher-image">
-            <div class="teacher-name">Banze Abdulai</div>
+            <img src="{{ $teacher->avatar }}" alt="{{ $teacher->userName }}" class="teacher-image">
+            <div class="teacher-name">{{ $teacher->userName }}</div>
             <div class="teacher-info">
-                <ul>
-                    <li>Thạc sĩ giáo dục.</li>
-                    <li>Cử nhân Ngôn ngữ Anh.</li>
-                    <li>Chứng chỉ TESOL.</li>
-                    <li>Chứng chỉ C1.</li>
-                    <li>Phương pháp cho trẻ làm quen Tiếng Anh.</li>
-                    <li>6 năm kinh nghiệm.</li>
-                    <li>2 năm tại Việt Nam.</li>
-                </ul>
+                {!! $teacher->skills !!}
             </div>
         </div>
-
-        <!-- Teacher 2 -->
-        <div class="teacher-card">
-            <img src="{{ asset('theme_client/images/teachers/teacher2.png') }}" alt="Banze Abdulai" class="teacher-image">
-            <div class="teacher-name">Richard Appiah</div>
-            <div class="teacher-info">
-                <ul>
-                    <li>Thạc sĩ giáo dục.</li>
-                    <li>Cử nhân Ngôn ngữ Anh.</li>
-                    <li>Chứng chỉ TEFL.</li>
-                    <li>Chứng chỉ C2.</li>
-                    <li>Phương pháp cho trẻ.</li>
-                    <li>6 năm kinh nghiệm.</li>
-                    <li>6 năm kinh nghiệm.</li>
-                    <li>2 năm tại Việt Nam.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Teacher 3 -->
-        <div class="teacher-card">
-            <img src="{{ asset('theme_client/images/teachers/teacher3.png') }}" alt="Banze Abdulai" class="teacher-image">
-            <div class="teacher-name">Boseah Bernard</div>
-            <div class="teacher-info">
-                <ul>
-                    <li>Thạc sĩ giáo dục.</li>
-                    <li>Cử nhân Ngôn ngữ Anh.</li>
-                    <li>Chứng chỉ TEFL.</li>
-                    <li>Phương pháp cho trẻ.</li>
-                    <li>10 năm kinh nghiệm.</li>
-                    <li>4 năm tại Việt Nam.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Teacher 4 -->
-        <div class="teacher-card">
-            <img src="{{ asset('theme_client/images/teachers/teacher4.png') }}" alt="Banze Abdulai" class="teacher-image">
-            <div class="teacher-name">Lytton Nakabugo</div>
-            <div class="teacher-info">
-                <ul>
-                    <li>Cử nhân Giáo dục.</li>
-                    <li>Chứng chỉ TESOL.</li>
-                    <li>Chứng chỉ C1.</li>
-                    <li>Phương pháp cho trẻ.</li>
-                    <li>5 năm kinh nghiệm.</li>
-                    <li>2 năm tại Việt Nam.</li>
-                </ul>
-            </div>
-        </div>
+        @endforeach
     </div>
-
-    <section class="video-section">
-        <div class="video-title">HƠN <span class="highlight">100.000+</span> HỌC VIÊN TIN TƯỞNG LỰA CHỌN</div>
-        <div class="video-fixed-grid">
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/Ay2S3mshSF4?si=bV7QzgLOsY0BQHLM" allowfullscreen></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/Ay2S3mshSF4?si=bV7QzgLOsY0BQHLM" allowfullscreen></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/Ay2S3mshSF4?si=bV7QzgLOsY0BQHLM" allowfullscreen></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/Ay2S3mshSF4?si=bV7QzgLOsY0BQHLM" allowfullscreen></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/Ay2S3mshSF4?si=bV7QzgLOsY0BQHLM" allowfullscreen></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/Ay2S3mshSF4?si=bV7QzgLOsY0BQHLM" allowfullscreen></iframe></div>
-        </div>
-    </section>
-
+</div>
+<div class="video-section-container">
+    <div class="container">
+        <section class="video-section">
+            <div class="video-title">HƠN <span class="highlight">100.000+</span> HỌC VIÊN TIN TƯỞNG LỰA CHỌN</div>
+            <div class="video-fixed-grid">
+                @foreach($videosStudent as $video)
+                <div class="video-item"><iframe src="{{ $video->video }}" allowfullscreen></iframe></div>
+                @endforeach
+            </div>
+        </section>
+    </div>
+</div>
+<div class="container">
     <section class="demand-study">
         <div class="header">HỌC TIẾNG TRUNG THEO NHU CẦU CỦA BẠN</div>
         <div class="content">

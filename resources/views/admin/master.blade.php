@@ -40,6 +40,9 @@
     <link href="opensearch" rel="search" title="Tìm kiếm trên sanpay.vn" type="application/opensearchdescription+xml">
     @yield('css')
     <style>
+        .main-sidebar {
+            background-color: #0e0e0e;
+        }
         .content-wrapper table td {
             vertical-align: middle;
         }

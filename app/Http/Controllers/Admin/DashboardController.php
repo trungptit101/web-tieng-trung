@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banners;
 use App\Models\Pages;
+use App\Models\Teachers;
+use App\Models\VideoStudent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -81,13 +83,13 @@ class DashboardController extends Controller
 
     public function detailIntroduce(Request $request)
     {
-        $page = Pages::Where('slug', 'gioi-thieu-hua-hua')->first();
-        if(empty($page)) {
+        $page = Pages::Where('slug', 'gioi-thieu-trung-tam-hua-hua')->first();
+        if (empty($page)) {
             $page = new Pages();
             $page->title = "Giới Thiệu HUA HUA";
             $page->link = "";
             $page->content = "";
-            $page->slug = "gioi-thieu-hua-hua";
+            $page->slug = "gioi-thieu-trung-tam-hua-hua";
             $page->save();
         }
         return view('admin.pages.detail', compact('page'));
@@ -114,7 +116,7 @@ class DashboardController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         try {
-            $page = Pages::Where('slug', 'gioi-thieu-hua-hua')->first();
+            $page = Pages::Where('slug', 'gioi-thieu-trung-tam-hua-hua')->first();
             $page->title = $request->input('title');
             $page->link = $request->input('link');
             $page->content = $request->input('content');
@@ -123,5 +125,126 @@ class DashboardController extends Controller
             return redirect()->back()->withErrors(["error" => $e->getMessage()]);
         }
         return redirect()->route('pages.introduce.detail')->with('success', 'Cập nhật thông tin giới thiệu thành công!');
+    }
+
+    public function listTeachers(Request $request)
+    {
+        $teachers = Teachers::query()->paginate(20);
+        return view('admin.teachers.index', compact('teachers'));
+    }
+
+    public function addFormTeacher(Request $request)
+    {
+        return view('admin.teachers.add');
+    }
+
+    public function detailTeacher(Request $request, $id)
+    {
+        $teacher = Teachers::findOrFail($id);
+        return view('admin.teachers.detail', compact('teacher'));
+    }
+
+    public function createTeacher(Request $request)
+    {
+        $rules = [
+            'userName' => 'required',
+            'email' => 'required|unique:users',
+            'phoneNumber' => 'required',
+            'skills' => 'required',
+            'avatar' => 'required',
+        ];
+        $message = [
+            'email.required' => 'Email không được trống!',
+            'email.unique' => 'Email đã tồn tại!',
+            'phoneNumber.required' => 'Số điện thoại không được trống!',
+            'userName.required' => 'Họ và tên không được trống!',
+            'skills.required' => 'Thành tích không được trống!',
+            'avatar.required' => 'Ảnh không được trống!',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        try {
+            $teacher = new Teachers();
+            if ($request->hasFile('avatar')) {
+                $file = $request->file('avatar');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $filePath = 'uploads/avatar/';
+                $file->move($filePath, $filename);
+                $teacher->avatar = '/uploads/avatar/' . $filename;
+            }
+            $teacher->userName = $request->input('userName');
+            $teacher->email = $request->input('email');
+            $teacher->phoneNumber = $request->input('phoneNumber');
+            $teacher->skills = $request->input('skills');
+            $teacher->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(["error" => $e->getMessage()]);
+        }
+        return redirect()->route('teachers.index')->with('success', 'Thêm mới giáo viên thành công!');
+    }
+
+    public function updateTeacher(Request $request, $id)
+    {
+        $teacher = Teachers::findOrFail($id);
+        if ($request->hasFile('avatar')) {
+            $file = $request->file('avatar');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $filePath = 'uploads/avatar/';
+            $file->move($filePath, $filename);
+            $teacher->avatar = '/uploads/avatar/' . $filename;
+        }
+        $teacher->userName = $request->input('userName');
+        $teacher->phoneNumber = $request->input('phoneNumber');
+        $teacher->skills = $request->input('skills');
+        $teacher->save();
+        return redirect()->route('teachers.index')->with('success', 'Cập nhật thông tin giáo viên thành công!');
+    }
+
+    public function deleteTeacher($id)
+    {
+        Teachers::find($id)->delete();
+        return redirect()->back()->with('success', 'Xóa giáo viên thành công');
+    }
+
+    public function listVideosStudent(Request $request)
+    {
+        $videos = VideoStudent::query()->get();
+        return view('admin.videos-student.index', compact('videos'));
+    }
+
+    public function addVideoStudent()
+    {
+        return view('admin.videos-student.add');
+    }
+
+    public function deleteVideoStudent($id)
+    {
+        VideoStudent::find($id)->delete();
+        return redirect()->back()->with('success', 'Xóa video học viên thành công');
+    }
+    public function createVideoStudent(Request $request)
+    {
+        $rules = [
+            'video' => 'required',
+        ];
+        $message = [
+            'video.required' => 'Link video không được trống!',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        try {
+            $video = new VideoStudent();
+            $video->video = $request->input('video');
+            $video->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(["error" => $e->getMessage()]);
+        }
+        return redirect()->route('videos.student.index')->with('success', 'Thêm video học viên thành công!');
     }
 }

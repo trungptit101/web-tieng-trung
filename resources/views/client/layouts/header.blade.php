@@ -1,9 +1,11 @@
 <header>
     <div class="logo">
-        <img src="{{ asset('/theme_client/images/logo.jpg') }}">
+        <a href="/">
+            <img src="{{ asset('/theme_client/images/logo.jpg') }}">
+        </a>
     </div>
     <nav>
-        <a href="#">Trang chủ</a>
+        <a href="/">Trang chủ</a>
         <a href="#">Profile giáo viên</a>
         <a href="#">Học viên khóa học</a>
         <a href="#">Dịch vụ</a>

@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title','Chi tiết tin tức')
+@section('title','Giới thiệu về HUA HUA')
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
@@ -8,7 +8,7 @@
                 <div class="col-sm-12">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Chi tiết tin tức</li>
+                        <li class="breadcrumb-item active">Giới thiệu về HUA HUA</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->

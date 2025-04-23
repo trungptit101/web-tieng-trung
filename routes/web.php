@@ -14,6 +14,7 @@ Route::get('/', 'Client\HomeController@index')->name('home');
 Route::get('/profile', 'Client\HomeController@profile')->name('profile');
 Route::get('/courses', 'Client\HomeController@courses')->name('courses');
 Route::get('/courses-detail', 'Client\HomeController@coursesDetail')->name('courses-detail');
+Route::get('/gioi-thieu-trung-tam-hua-hua', 'Client\HomeController@detailCenterHuaHua')->name('detail-center');
 
 // Admin route
 Route::group(
@@ -36,6 +37,24 @@ Route::group(
         Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
             Route::get('/introduce/detail', 'Admin\DashboardController@detailIntroduce')->name('introduce.detail');
             Route::post('/introduce/detail', 'Admin\DashboardController@updateIntroduce')->name('introduce.update');
+        });
+
+        // Quan ly giao vien
+        Route::group(['prefix' => 'teachers', 'as' => 'teachers.'], function () {
+            Route::get('index', 'Admin\DashboardController@listTeachers')->name('index');
+            Route::get('add', 'Admin\DashboardController@addFormTeacher')->name('add');
+            Route::post('add', 'Admin\DashboardController@createTeacher')->name('create');
+            Route::get('detail/{id}', 'Admin\DashboardController@detailTeacher')->name('detail');
+            Route::post('update/{id}', 'Admin\DashboardController@updateTeacher')->name('update');
+            Route::post('delete/{id}', 'Admin\DashboardController@deleteTeacher')->name('delete');
+        });
+
+        // Quan ly video hoc vien
+        Route::group(['prefix' => 'videos.student', 'as' => 'videos.student.'], function () {
+            Route::get('index', 'Admin\DashboardController@listVideosStudent')->name('index');
+            Route::get('add', 'Admin\DashboardController@addVideoStudent')->name('add');
+            Route::post('add', 'Admin\DashboardController@createVideoStudent')->name('create');
+            Route::post('delete/{id}', 'Admin\DashboardController@deleteVideoStudent')->name('delete');
         });
     }
 );

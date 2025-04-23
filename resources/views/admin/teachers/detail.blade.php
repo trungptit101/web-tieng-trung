@@ -1,0 +1,112 @@
+@extends('admin.master')
+@section('title','Cập nhật thông tin giáo viên')
+@section('content')
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Cập nhật thông tin giáo viên</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card card-success card-outline">
+                        <form action="{{ route('teachers.update', $teacher->id) }}" method="post" id="formRegisterCoach" class="form-horizontal" enctype="multipart/form-data">
+                            <div class="card-body">
+                                @csrf
+                                <div class="row form-group">
+                                    <label for="" class="col-sm-2 col-form-label">
+                                        Họ và tên<span style="color: red">*</span>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="userName" value="{{ $teacher->userName }}" minlength="5" placeholder="Nhập họ tên" class="form-control userName @error('userName') is-invalid @enderror">
+                                        @error("userName")
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label for="" class="col-sm-2 col-form-label">
+                                        Email<span style="color: red">*</span>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="email" disabled value="{{ $teacher->email }}" placeholder="Email" class="form-control email @error('email') is-invalid @enderror">
+                                        @error("email")
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label for="" class="col-sm-2 col-form-label">
+                                        Số điện thoại<span style="color: red">*</span>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="phoneNumber" value="{{ $teacher->phoneNumber }}" minlength="5" placeholder="Nhập họ tên" class="form-control phoneNumber @error('phoneNumber') is-invalid @enderror">
+                                        @error("phoneNumber")
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 col-form-label">
+                                        Thành tích
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <textarea placeholder="Thành tích" id="skills" class="form-control ckeditor skills @error(" skills") is-invalid @enderror" name="skills">{{ $teacher->skills }}</textarea>
+                                        @error("skills")
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputName" class="col-sm-2 col-form-label">
+                                        Avartar
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="avatar" class="form-control @error('avatar') is-invalid @enderror" placeholder="File content">
+                                        @error('avatar')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success float-right btn-sm">
+                                    <i class="fas fa-save"></i> Cập nhật
+                                </button>
+                                <a href="{{ route('teachers.index') }}" class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-arrow-circle-left"></i>
+                                    Trở về
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@section('css')
+<style>
+    .label-permission {
+        cursor: pointer;
+        font-weight: 500 !important;
+    }
+</style>
+@endsection
+@section('js')
+<script !src="">
+
+</script>
+@endsection
