@@ -10,26 +10,10 @@ use App\Models\Teachers;
 use App\Models\VideoStudent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Province;
-use App\Models\Order;
-use App\Notifications\InfoAccountNotification;
-use Hash;
-use Illuminate\Support\Facades\Notification;
-use DateTime;
-use Illuminate\Support\Facades\Auth;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use Mail;
 
 class DashboardController extends Controller
 {
-    // public function index()
-    // {
-    //     return view('admin.dashboard.index');
-    // }
-
-    public function index(Request $request)
+    public function index()
     {
         return view('admin.dashboard.index');
     }
@@ -74,7 +58,7 @@ class DashboardController extends Controller
         return redirect()->route('banners.index')->with('success', 'Thêm ảnh thành công!');
     }
 
-    public function deleteImage(Request $request, $bannerId)
+    public function deleteImage($bannerId)
     {
         $banner = Banners::find($bannerId);
         $banner->delete();
@@ -151,7 +135,9 @@ class DashboardController extends Controller
             'email' => 'required|unique:users',
             'phoneNumber' => 'required',
             'skills' => 'required',
+            'introduce' => 'required',
             'avatar' => 'required',
+            'banner' => 'required',
         ];
         $message = [
             'email.required' => 'Email không được trống!',
@@ -159,7 +145,9 @@ class DashboardController extends Controller
             'phoneNumber.required' => 'Số điện thoại không được trống!',
             'userName.required' => 'Họ và tên không được trống!',
             'skills.required' => 'Thành tích không được trống!',
+            'introduce.required' => 'Giới thiệu không được trống!',
             'avatar.required' => 'Ảnh không được trống!',
+            'banner.required' => 'Banner không được trống!',
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
@@ -175,10 +163,19 @@ class DashboardController extends Controller
                 $file->move($filePath, $filename);
                 $teacher->avatar = '/uploads/avatar/' . $filename;
             }
+            if ($request->hasFile('banner')) {
+                $file = $request->file('banner');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $filePath = 'uploads/avatar/';
+                $file->move($filePath, $filename);
+                $teacher->banner = '/uploads/avatar/' . $filename;
+            }
             $teacher->userName = $request->input('userName');
             $teacher->email = $request->input('email');
             $teacher->phoneNumber = $request->input('phoneNumber');
             $teacher->skills = $request->input('skills');
+            $teacher->introduce = $request->input('introduce');
+            $teacher->slug = Str::slug($request->input('userName'));;
             $teacher->save();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(["error" => $e->getMessage()]);
@@ -196,9 +193,18 @@ class DashboardController extends Controller
             $file->move($filePath, $filename);
             $teacher->avatar = '/uploads/avatar/' . $filename;
         }
+        if ($request->hasFile('banner')) {
+            $file = $request->file('banner');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $filePath = 'uploads/avatar/';
+            $file->move($filePath, $filename);
+            $teacher->banner = '/uploads/avatar/' . $filename;
+        }
         $teacher->userName = $request->input('userName');
         $teacher->phoneNumber = $request->input('phoneNumber');
         $teacher->skills = $request->input('skills');
+        $teacher->introduce = $request->input('introduce');
+        $teacher->slug = Str::slug($teacher->userName);
         $teacher->save();
         return redirect()->route('teachers.index')->with('success', 'Cập nhật thông tin giáo viên thành công!');
     }

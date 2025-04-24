@@ -11,7 +11,7 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 
 // Client
 Route::get('/', 'Client\HomeController@index')->name('home');
-Route::get('/profile', 'Client\HomeController@profile')->name('profile');
+Route::get('/profile-giao-vien/{slug}', 'Client\HomeController@profile')->name('profile');
 Route::get('/courses', 'Client\HomeController@courses')->name('courses');
 Route::get('/courses-detail', 'Client\HomeController@coursesDetail')->name('courses-detail');
 Route::get('/gioi-thieu-trung-tam-hua-hua', 'Client\HomeController@detailCenterHuaHua')->name('detail-center');
@@ -50,11 +50,21 @@ Route::group(
         });
 
         // Quan ly video hoc vien
-        Route::group(['prefix' => 'videos.student', 'as' => 'videos.student.'], function () {
+        Route::group(['prefix' => 'videos/student', 'as' => 'videos.student.'], function () {
             Route::get('index', 'Admin\DashboardController@listVideosStudent')->name('index');
             Route::get('add', 'Admin\DashboardController@addVideoStudent')->name('add');
             Route::post('add', 'Admin\DashboardController@createVideoStudent')->name('create');
             Route::post('delete/{id}', 'Admin\DashboardController@deleteVideoStudent')->name('delete');
+        });
+
+        // Quan ly video hoc vien
+        Route::group(['prefix' => 'courses/teacher', 'as' => 'courses.teacher.'], function () {
+            Route::get('{id}/index', 'Admin\CourseTeacherController@listCoursesTeacher')->name('index');
+            Route::get('{id}/add', 'Admin\CourseTeacherController@addCourseTeacher')->name('add');
+            Route::post('{id}/add', 'Admin\CourseTeacherController@createCourseTeacher')->name('create');
+            Route::get('{id}/detail', 'Admin\CourseTeacherController@detailCourseTeacher')->name('detail');
+            Route::post('{id}/detail', 'Admin\CourseTeacherController@updateCourseTeacher')->name('update');
+            Route::post('{id}/delete', 'Admin\CourseTeacherController@deleteCourseTeacher')->name('delete');
         });
     }
 );

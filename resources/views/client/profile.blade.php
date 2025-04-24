@@ -154,21 +154,16 @@
     <div class="container">
         <div class="teacher-section-container">
             <div class="teacher-card">
-                <img src="{{ asset('theme_client/images/profile.png') }}" alt="Giảng viên" class="teacher-img">
+                <img src="{{ $teacher->banner }}" alt="Giảng viên" class="teacher-img">
             </div>
 
             <div class="teacher-detail">
                 <h4>👩‍🏫 GIÁO VIÊN CHÍNH</h4>
                 <h4>GIỚI THIỆU:</h4>
-                <p>Giáo viên tại Trung Tâm Tiếng Trung DEER 100% đều tốt nghiệp các trường Đại học hàng đầu về đào tạo ngoại ngữ/Thạc sĩ Ngôn ngữ Trung...</p>
+                {!! $teacher->introduce !!}
 
                 <h4>THÀNH TÍCH:</h4>
-                <ul>
-                    <li>Đạt Trình Độ HSK6</li>
-                    <li>Nhiều năm kinh nghiệm nghiên cứu, giảng dạy luyện thi HSK</li>
-                    <li>Đã đào tạo tới hơn 1300 học viên đạt được HSK4-6</li>
-                    <li>Đã có 1-2 năm kinh nghiệm làm việc các doanh nghiệp Trung Quốc tại Việt Nam</li>
-                </ul>
+                {!! $teacher->skills !!}
             </div>
         </div>
     </div>
@@ -177,48 +172,15 @@
     <section class="list-course">
         <div class="header">KHOÁ HỌC</div>
         <div class="video-grid">
+            @foreach($courses as $course)
             <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/I7vm7Y3zID8?si=7t7PBOmKYfDS45q-" allowfullscreen></iframe>
+                <iframe src="{{ $course->link }}" allowfullscreen></iframe>
                 <div class="title">
-                    Lớp tiếng Trung giao tiếp - Buổi 1 - Phần 1 - K15 - Cô Phạm Thu Trang | Hán ngữ Hua Hua
+                    {{$course->title}}
                 </div>
                 <div class="author">Hán Ngữ Hua Hua</div>
             </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/I7vm7Y3zID8?si=7t7PBOmKYfDS45q-" allowfullscreen></iframe>
-                <div class="title">
-                    Lớp tiếng Trung giao tiếp - Buổi 1 - Phần 1 - K15 - Cô Phạm Thu Trang | Hán ngữ Hua Hua
-                </div>
-                <div class="author">Hán Ngữ Hua Hua</div>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/I7vm7Y3zID8?si=7t7PBOmKYfDS45q-" allowfullscreen></iframe>
-                <div class="title">
-                    Lớp tiếng Trung giao tiếp - Buổi 1 - Phần 1 - K15 - Cô Phạm Thu Trang | Hán ngữ Hua Hua
-                </div>
-                <div class="author">Hán Ngữ Hua Hua</div>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/I7vm7Y3zID8?si=7t7PBOmKYfDS45q-" allowfullscreen></iframe>
-                <div class="title">
-                    Lớp tiếng Trung giao tiếp - Buổi 1 - Phần 1 - K15 - Cô Phạm Thu Trang | Hán ngữ Hua Hua
-                </div>
-                <div class="author">Hán Ngữ Hua Hua</div>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/I7vm7Y3zID8?si=7t7PBOmKYfDS45q-" allowfullscreen></iframe>
-                <div class="title">
-                    Lớp tiếng Trung giao tiếp - Buổi 1 - Phần 1 - K15 - Cô Phạm Thu Trang | Hán ngữ Hua Hua
-                </div>
-                <div class="author">Hán Ngữ Hua Hua</div>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/I7vm7Y3zID8?si=7t7PBOmKYfDS45q-" allowfullscreen></iframe>
-                <div class="title">
-                    Lớp tiếng Trung giao tiếp - Buổi 1 - Phần 1 - K15 - Cô Phạm Thu Trang | Hán ngữ Hua Hua
-                </div>
-                <div class="author">Hán Ngữ Hua Hua</div>
-            </div>
+            @endforeach
         </div>
     </section>
 </div>

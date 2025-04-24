@@ -39,10 +39,13 @@
                                         <tr>
                                             <th style="width: 10px">STT</th>
                                             <th>Avatar</th>
+                                            <th>Banner</th>
                                             <th>Email</th>
                                             <th>Họ và tên</th>
                                             <th>Số điện thoại</th>
+                                            <th>Giới thiệu</th>
                                             <th>Thành tích</th>
+                                            <th>Khoá học</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
@@ -51,10 +54,15 @@
                                         <tr>
                                             <td class="text-center" style="font-weight: bold;">{{ $key + 1 }}</td>
                                             <td><img src="{{ asset($teacher->avatar) }}" height="100" style="border-radius: 50%" /></td>
+                                            <td style="padding: 10px 20px;"><img src="{{ asset($teacher->banner) }}" style="max-height: 300px;" /></td>
                                             <td>{{ $teacher->email }}</td>
                                             <td>{{ $teacher->userName }}</td>
                                             <td>{{ $teacher->phoneNumber }}</td>
+                                            <td style="max-width: 400px">{!! $teacher->introduce !!}</td>
                                             <td>{!! $teacher->skills !!}</td>
+                                            <td style="min-width: 100px; font-weight: bold; color: #17a2b8;">
+                                                <a href="{{ route('courses.teacher.index', $teacher->id) }}">{!! \App\Models\Teachers::getCountCourse($teacher->id) !!} khoá học</a>
+                                            </td>
                                             <td>
                                                 <a href="{{ route('teachers.detail', $teacher->id) }}" class="btn btn-primary btn-xs" title="Sửa">
                                                     <i class="fas fa-edit"></i>

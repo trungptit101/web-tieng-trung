@@ -7,6 +7,7 @@ use App\Models\Banners;
 use App\Models\Pages;
 use App\Models\Teachers;
 use App\Models\VideoStudent;
+use App\Models\CourseTeacher;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,9 +21,12 @@ class HomeController extends Controller
         return view('client.home', compact('banners', 'page', 'teachers', 'videosStudent'));
     }
 
-    public function profile()
+    public function profile($slug)
     {
-        return view('client.profile');
+        $teacher = Teachers::Where('slug', $slug)->first();
+        if(!isset($teacher)) return redirect()->back();
+        $courses = CourseTeacher::query()->where('teacherId', $teacher->id)->get();
+        return view('client.profile', compact('teacher', 'courses'));
     }
 
     public function detailCenterHuaHua()

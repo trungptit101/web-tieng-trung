@@ -71,6 +71,7 @@
         width: calc(25% - 15px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         text-align: center;
+        cursor: pointer;
     }
 
     .teacher-image {
@@ -324,7 +325,7 @@
 
     <div class="teacher-container">
         @foreach($teachers as $teacher)
-        <div class="teacher-card">
+        <div class="teacher-card" onClick="openProfileTeacher('{{ $teacher->slug }}')">
             <img src="{{ $teacher->avatar }}" alt="{{ $teacher->userName }}" class="teacher-image">
             <div class="teacher-name">{{ $teacher->userName }}</div>
             <div class="teacher-info">
@@ -381,4 +382,12 @@
     </div>
 </section>
 
+@endsection
+
+@section('script')
+<script>
+    function openProfileTeacher(slug) {
+        window.location.href = `/profile-giao-vien/${slug}`;
+    }
+</script>
 @endsection

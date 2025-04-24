@@ -57,12 +57,36 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-2 col-form-label">
+                                        Giới thiệu
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <textarea placeholder="Giới thiệu" id="introduce" class="form-control ckeditor introduce @error(" introduce") is-invalid @enderror" name="introduce">{{ $teacher->introduce }}</textarea>
+                                        @error("introduce")
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 col-form-label">
                                         Thành tích
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-10">
                                         <textarea placeholder="Thành tích" id="skills" class="form-control ckeditor skills @error(" skills") is-invalid @enderror" name="skills">{{ $teacher->skills }}</textarea>
                                         @error("skills")
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputName" class="col-sm-2 col-form-label">
+                                        Banner
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="banner" class="form-control @error('banner') is-invalid @enderror" placeholder="File content">
+                                        @error('banner')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
