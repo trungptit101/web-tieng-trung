@@ -6,11 +6,10 @@
     </div>
     <nav>
         <a href="/">Trang chủ</a>
-        <a href="#">Profile giáo viên</a>
-        <a href="#">Học viên khóa học</a>
-        <a href="#">Dịch vụ</a>
-        <a href="#">Việt - Chào</a>
-        <a href="#">Liên hệ</a>
+        <a href="{{ route('studentTalkAbout') }}">Học viên nói gì về chúng tôi</a>
+        <a href="{{ route('courses') }}">Khóa học</a>
+        <a onclick="scrollWriter()">Cách viết chữ Hán</a>
+        <a href="">Liên hệ</a>
     </nav>
 </header>
 
@@ -48,6 +47,13 @@
     }
 </style>
 
+<script>
+    function scrollWriter() {
+        document.getElementById('write-words').scrollIntoView({
+            behavior: 'smooth' // mượt
+        });
+    }
+</script>
 @section('script')
 <script>
     const track = document.querySelector('.carousel-track');

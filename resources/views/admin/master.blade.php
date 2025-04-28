@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     <link href="{{ asset('/theme_admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-    <link rel="icon" href="https://sanpay.vn/images/logo-mini.png" type="image/x-icon">
+    <link rel="icon" href="{{ asset('/theme_client/images/logo.jpg') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('/theme_admin/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/theme_admin/css/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/theme_admin/css/jquery-ui.css') }}">
@@ -15,29 +15,21 @@
     <script src="{{ asset('/theme_admin/vendor/ckeditor/ckeditor.js') }}"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
-    <meta name="description" content="sanpay.vn">
 
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="Trang chủ">
-    <meta itemprop="description" content="sanpay.vn">
-    <meta itemprop="image" content="https://sanpay.vn/images/logo-mini.png">
+    <meta itemprop="image" content="{{ asset('/theme_client/images/logo.jpg') }}">
 
     <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://sanpay.vn/">
-    <meta property="og:type" content="sanpay.vn">
     <meta property="og:title" content="Trang chủ">
-    <meta property="og:description" content="sanpay.vn">
-    <meta property="og:image" content="https://sanpay.vn/images/logo-mini.png">
+    <meta property="og:image" content="{{ asset('/theme_client/images/logo.jpg') }}">
 
     <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="sanpay.vn">
     <meta name="twitter:title" content="Trang chủ">
-    <meta name="twitter:description" content="sanpay.vn">
-    <link rel="icon" type="image/png" href="https://sanpay.vn/images/logo-mini.png">
+    <link rel="icon" type="image/png" href="{{ asset('/theme_client/images/logo.jpg') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="opensearch" rel="search" title="Tìm kiếm trên sanpay.vn" type="application/opensearchdescription+xml">
     @yield('css')
     <style>
         .main-sidebar {

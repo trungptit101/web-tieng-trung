@@ -17,20 +17,11 @@
     <meta name="apple-itunes-app" content="app-id=1608999909">
     <meta name="google-play-app" content="app-id=com.postmart">
 
-    <meta property="og:site_name" content="Postmart" />
-    <meta property="og:site" content="postmart.vn" />
-    <meta property="og:title" content="Postmart" />
-    <meta property="og:image" content="images/pm_meta.jpg" />
-    <meta property="og:description" content="Sàn thương mại điện tử về nông sản, đặc sản đầu tiên tại Việt Nam" />
     <meta property="og:url" content="index.html" />
     <meta property="og:locale" content="vi_VN" />
     <meta property="og:type" content="website" />
 
-    <meta name="cystack-verification" content="a4d9a6450e130390ab1a41a76efda22f" />
-    <meta name="zalo-platform-site-verification" content="PjFZ2hJUEGTWxBqnbjWj4aFNcmglfa1KC3C" />
-    <meta name="google-site-verification" content="5JWyb1RVyaYPk919dqBuiw6rt-Erryzyll5b4UYf3QM" />
-    <link href="opensearch" rel="search" title="Tìm kiếm trên PostMart.vn"
-        type="application/opensearchdescription+xml">
+    <link rel="icon" type="image/png" href="{{ asset('/theme_client/images/logo.jpg') }}">
 
     <!-- Website Title -->
     <title>@yield('title')</title>

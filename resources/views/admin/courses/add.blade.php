@@ -129,8 +129,8 @@
                                     </label>
                                     <div class="resource-list col-sm-10" id="resource-list">
                                         <div class="resource-item">
-                                            <input type="text" required class="form-control" value="{{ $resource->title }}" name="resource_titles[]" placeholder="Nhập tài liệu (e.g., Tuyển tập bộ đề thi HSK 3...)">
-                                            <input type="text" required class="form-control" value="{{ $resource->link }}" name="resource_links[]" placeholder="Đường dẫn (e.g., https://example.com)">
+                                            <input type="text" required class="form-control" name="resource_titles[]" placeholder="Nhập tài liệu (e.g., Tuyển tập bộ đề thi HSK 3...)">
+                                            <input type="text" required class="form-control" name="resource_links[]" placeholder="Đường dẫn (e.g., https://example.com)">
                                             <button type="button" class="remove-resource">Xóa</button>
                                         </div>
                                     </div>

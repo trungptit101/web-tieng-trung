@@ -78,9 +78,7 @@ class LoginController extends Controller
             return redirect()->route('courses.index');
         }
 
-        return response()->json([
-            'loginStatus' => false,
-        ]);
+        return redirect()->back()->withErrors(['password' => 'Email hoặc mật khẩu không đúng.']);
     }
 
 }

@@ -1,5 +1,5 @@
 @extends('client.layouts.master')
-@section('title', 'Chi tiết khoá học')
+@section('title', $course->title)
 @section('css')
 <style>
     .carousel-container {
@@ -545,7 +545,8 @@
                 <div id="dkkh">
                     <div class="login-wrapper">
                         <div class="login-content">
-                            <form action="https://crm2.sofl.edu.vn/cam-on-da-dang-ky.html" method="POST" id="test-form">
+                            <form action="{{ route('register-advise') }}" method="POST" id="test-form">
+                                @csrf
                                 <div class="">
                                     <div class="form-group">
                                         <i class="fa fa-user"></i>
@@ -558,7 +559,7 @@
                                     <div class="form-group ">
                                         <i class="fa fa-envelope"></i>
                                         <span class="form-1">
-                                            <input type="text" class="form-control" name="email" placeholder="Nhập Email" required="">
+                                            <input type="email" class="form-control" name="email" placeholder="Nhập Email" required="">
                                         </span>
                                     </div>
                                 </div>
@@ -574,11 +575,11 @@
                                     <div class="form-group">
                                         <i class="fa fa-pencil-square"></i>
                                         <span class="form-1">
-                                            <input type="text" class="form-control" value="HSK 3 / HSKK" readonly="" required="">
+                                            <input type="text" class="form-control" name="course" value="{{ $course->title }}" readonly="" required="">
                                         </span>
                                     </div>
                                 </div>
-                                <div class="">
+                                <!-- <div class="">
                                     <div class="form-group ">
                                         <i class="fa  fa-map-marker"></i>
                                         <span class="form-1">
@@ -587,8 +588,8 @@
                                             </select>
                                         </span>
                                     </div>
-                                </div>
-                                <button class="btn-register">Đăng kí tư vấn </button>
+                                </div> -->
+                                <button class="btn-register" type="submit">Đăng kí tư vấn </button>
                             </form>
                         </div>
                     </div>
@@ -647,7 +648,7 @@
                 @foreach(json_decode($course->resources) as $key => $resource)
                 <div class="col-xs-12 col-md-6">
                     <a target="_blank">
-                        <div class="step-resource-course">
+                        <div class="step-resource-course" onClick="openDocumentLink('{{ $resource->link }}')">
                             <div class="step-number">
                                 @if($key < 9)
                                     0{{$key + 1}}
@@ -667,3 +668,8 @@
 </div>
 @endif
 @endsection
+<script>
+    function openDocumentLink(link) {
+        window.location.href = link;
+    }
+</script>

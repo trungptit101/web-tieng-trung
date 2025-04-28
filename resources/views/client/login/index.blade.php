@@ -159,6 +159,15 @@
             overflow: hidden;
         }
     }
+
+    .text-invalid {
+        color: #ff0018;
+        font-size: 15px;
+        text-align: left;
+        margin-top: -20px;
+        margin-bottom: 10px;
+        margin-left: 16px;
+    }
 </style>
 @endsection
 
@@ -169,13 +178,16 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="input-group">
-                <input type="email" name="email" class="@error('email') is-invalid @enderror" placeholder=" " required autocomplete="email" autofocus>
+                <input type="email" name="email" class="@error('password') is-invalid @enderror" placeholder=" " required autocomplete="email">
                 <label for="email">Tên đăng nhập</label>
             </div>
             <div class="input-group">
                 <input type="password" name="password" class="@error('password') is-invalid @enderror" placeholder=" " required autocomplete="current-password">
                 <label for="password">Mật khẩu</label>
             </div>
+            @error('password')
+            <div class="text-invalid">{{ $message }}</div>
+            @enderror
             <button type="submit">Đăng Nhập</button>
             <div class="forgot-password">
                 <a href="#">Quên mật khẩu?</a>

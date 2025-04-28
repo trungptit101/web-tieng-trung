@@ -18,6 +18,22 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('documents.index') }}" class="nav-link {{ Route::is('documents.*')? 'active' : '' }}">
+                        <i class="nav-icon far fa-file-pdf"></i>
+                        <p>
+                            Quản Lý Tài Liệu
+                        </p>
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a href="{{ route('documents.index') }}" class="nav-link {{ Route::is('documents.*')? 'active' : '' }}">
+                        <i class="nav-icon far fa-file-pdf"></i>
+                        <p>
+                            Đăng Ký Tư Vấn
+                        </p>
+                    </a>
+                </li> -->
+                <li class="nav-item">
                     <a href="{{ route('banners.index') }}" class="nav-link {{ Route::is('banners.*')? 'active' : '' }}">
                         <i class="nav-icon fas fa-image"></i>
                         <p>

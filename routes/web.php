@@ -12,9 +12,13 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 // Client
 Route::get('/', 'Client\HomeController@index')->name('home');
 Route::get('/profile-giao-vien/{slug}', 'Client\HomeController@profile')->name('profile');
+Route::get('/hoc-vien-noi-gi-ve-chung-toi', 'Client\HomeController@studentTalkAbout')->name('studentTalkAbout');
 Route::get('/khoa-hoc', 'Client\HomeController@courses')->name('courses');
 Route::get('/khoa-hoc/{slug}', 'Client\HomeController@coursesDetail')->name('courses-detail');
 Route::get('/gioi-thieu-trung-tam-hua-hua', 'Client\HomeController@detailCenterHuaHua')->name('detail-center');
+Route::get('/tai-lieu/{slug}', 'Client\HomeController@documentCourse')->name('document-course');
+Route::post('/dang-ky-tu-van', 'Client\HomeController@registerAdvise')->name('register-advise');
+Route::get('/dang-ky-tu-van-thanh-cong', 'Client\HomeController@registerAdviseSuccess')->name('register-advise-success');
 
 // Admin route
 Route::group(
@@ -75,6 +79,16 @@ Route::group(
             Route::get('detail/{id}', 'Admin\CoursesController@detailCourse')->name('detail');
             Route::post('detail/{id}', 'Admin\CoursesController@updateCourse')->name('update');
             Route::post('delete', 'Admin\CoursesController@deleteCourse')->name('delete');
+        });
+
+        // tai lieu
+        Route::group(['prefix' => 'documents', 'as' => 'documents.'], function () {
+            Route::get('/index', 'Admin\DocumentsController@index')->name('index');
+            Route::get('/add', 'Admin\DocumentsController@add')->name('add');
+            Route::post('/add', 'Admin\DocumentsController@addNew')->name('add');
+            Route::get('/detail/{id}', 'Admin\DocumentsController@detail')->name('detail');
+            Route::post('/delete/{id}', 'Admin\DocumentsController@delete')->name('delete');
+            Route::post('/detail/{id}', 'Admin\DocumentsController@update')->name('update');
         });
     }
 );

@@ -9,6 +9,7 @@ use App\Models\Teachers;
 use App\Models\VideoStudent;
 use App\Models\CourseTeacher;
 use App\Models\Courses;
+use App\Models\RegisterAdvise;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -40,6 +41,38 @@ class HomeController extends Controller
     {
         $courses = Courses::query()->get();
         return view('client.courses', compact('courses'));
+    }
+
+    public function studentTalkAbout()
+    {
+        $videosStudent = VideoStudent::query()->get();
+        return view('client.student-talk-about', compact('videosStudent'));
+    }
+
+    public function documentCourse($slug)
+    {
+        $document = Documents::where('slug', $slug)->first();
+        return view('client.document-course', compact('document'));
+    }
+
+    public function registerAdvise(Request $request)
+    {
+        try {
+            $register = new RegisterAdvise();
+            $register->name = $request->input('name');
+            $register->email = $request->input('email');
+            $register->phone = $request->input('phone');
+            $register->course = $request->input('course');
+            $register->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(["error" => $e->getMessage()]);
+        }
+        return redirect()->route('register-advise-success');
+    }
+
+    public function registerAdviseSuccess()
+    {
+        return view('client.register-advise-success');
     }
 
     public function coursesDetail($slug)
