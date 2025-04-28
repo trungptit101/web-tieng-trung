@@ -7,7 +7,7 @@
     }
 
     #header-kh {
-        background: url('https://trungtamtiengtrung.edu.vn/themes/default/images/khoa-hoc.png');
+        background: url("../theme_client/images/khoa-hoc.png");
         background-size: 100%;
     }
 
@@ -38,8 +38,24 @@
     .no-mar::after {
         content: '';
         display: block;
-        width: 50px;
-        height: 5px;
+        width: 100px;
+        height: 3px;
+        background-color: #fff;
+        margin: 5px auto;
+    }
+
+    .title-step {
+        margin-top: 30px;
+        padding: 15px 0;
+        font-size: 19px;
+        font-weight: 600;
+    }
+
+    .title-step::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
         background-color: #000;
         margin: 5px auto;
     }
@@ -59,9 +75,6 @@
             left: calc(50% - 35px);
         }
 
-        .no-mar {
-            margin-top: 35px;
-        }
     }
 
     @media (max-width: 576px) {
@@ -130,7 +143,6 @@
     }
 
     .tab-pane ul {
-        list-style: none;
         padding: 0;
         margin-bottom: 0px;
     }
@@ -146,7 +158,7 @@
     }
 
     .bg-tvh {
-        background: url("./theme_client/images/khoa-hoc.png");
+        background: url("../theme_client/images/khoa-hoc.png");
         margin-bottom: 40px;
     }
 
@@ -239,7 +251,7 @@
     }
 
     .bg-khoa {
-        background: url("./theme_client/images/khoa-hoc.png");
+        background: url("../theme_client/images/khoa-hoc.png");
     }
 
     .title-khai-giang {
@@ -300,7 +312,7 @@
     .resource-document-left {
         display: flex;
         align-items: center;
-        background: url("./theme_client/images/khoa-hoc.png");
+        background: url("../theme_client/images/khoa-hoc.png");
     }
 
     .resource-document-title {
@@ -323,6 +335,7 @@
     }
 
     .step-resource-course {
+        cursor: pointer;
         background: #FCB400;
         padding: 10px;
         margin: 15px 5px;
@@ -353,7 +366,7 @@
                 KHOÁ HỌC TIẾNG TRUNG
             </h1>
             <h1 class="text-center" style="color: #ff0; font-weight: bold; font-size: 60px; padding: 16px 0 0;">
-                HSK 3 / HSKK
+                {{ $course->title }}
             </h1>
             <div class="text-center desc">
                 <div class="box-title">
@@ -378,7 +391,7 @@
                     <div class="icon-img">
                         <img src="{{ asset('theme_client/images/uy-tin-lau-nam.png') }}" alt="UY TÍN LÂU NĂM" class=" bor-15" style="margin :0 auto">
                     </div>
-                    <div class="no-mar">
+                    <div class="title-step">
                         UY TÍN LÂU NĂM
                     </div>
                     <div class="pd-lr-10">Trung tâm tiếng Trung SOFL hoạt động từ năm 2008 là đơn vị tiên phong trong lĩnh vực đào tạo tiếng Trung cho người Việt.</div>
@@ -388,7 +401,7 @@
                     <div class="icon-img">
                         <img src="{{ asset('theme_client/images/doi-ngu-giang-vien-gioi.png') }}" alt="ĐỘI NGŨ GIẢNG VIÊN GIỎI" class=" bor-15" style="margin :0 auto">
                     </div>
-                    <div class="no-mar">
+                    <div class="title-step">
                         ĐỘI NGŨ GIẢNG VIÊN GIỎI
                     </div>
                     <div class="desc">100% đội ngũ giáo viên đều có bằng chứ chỉ HSK 5 trở lên, là cử nhân của các trường đại học lớn, kinh nghiệm giảng dạy trên 3 năm.</div>
@@ -398,7 +411,7 @@
                     <div class="icon-img">
                         <img src="{{ asset('theme_client/images/phuong-phap-toi-uu.png') }}" alt="PHƯƠNG PHÁP TỐI ƯU" class=" bor-15" style="margin :0 auto">
                     </div>
-                    <div class="no-mar">
+                    <div class="title-step">
                         PHƯƠNG PHÁP TỐI ƯU
                     </div>
                     <div class="desc">Lộ trình học chuẩn quốc tế, xây dựng các giờ học tập chung và các hoạt động học bằng hình ảnh, âm thanh kết hợp trò chơi.</div>
@@ -429,7 +442,8 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="infomation-course">
-                <ul>
+                {!! $course->infomationCourse !!}
+                <!-- <ul>
                     <li>
                         <i class="fa fa-check-circle-o"></i>
                         <span style="font-size:18px">
@@ -473,10 +487,11 @@
                         <i class="fa fa-check-circle-o"></i>
                         <span style="font-size:18px"><strong>Địa điểm :</strong>Tại các cơ sở học tập của SOFL tại Hà Nội và TP.HCM</span>
                     </li>
-                </ul>
+                </ul> -->
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="course-output">
-                <ul>
+                {!! $course->outputCourse !!}
+                <!-- <ul>
                     <li>
                         <i class="fa fa-check-circle-o"></i>
                         <span style="font-size:16px">Tích lũy 600 từ vựng và 75 cấu trúc ngữ pháp trình độ cơ bản đến HSK3</span>
@@ -503,15 +518,16 @@
                         <i class="fa fa-check-circle-o"></i>
                         <strong><span style="color:rgb(255, 140, 0)"><span style="font-size:16px">Cam kết đầu ra HSK3/HSK6 ►Thi đỗ HSK 3 > 210đ</span></span></strong>
                     </li>
-                </ul>
+                </ul> -->
             </div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="student-rights">
-                <div id="quyen-loi-hoc-vien-269" class="tabcontentkh" style="display: block;">
+                {!! $course->interestCourse !!}
+                <!-- <div id="quyen-loi-hoc-vien-269" class="tabcontentkh" style="display: block;">
                     <p><strong>CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO 50 SLOT ĐĂNG KÝ ĐẦU TIÊN:</strong></p>
                     <p><strong>- GIẢM 55% HỌC PHÍ KHOÁ HỌC</strong></p>
                     <p><strong>- GIẢM THÊM 300K KHI ĐĂNG KÝ NHÓM 2 NGƯỜI TRỞ LÊN</strong></p>
                     <p><strong>ÁP DỤNG ĐĂNG KÝ TRÊN&nbsp;TOÀN HỆ THỐNG CƠ SỞ ĐÀO TẠO CỦA TRUNG TÂM SOFL</strong></p>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -584,7 +600,7 @@
 <div class="bg-khoa">
     <div class="container">
         <div class="title-khai-giang">
-            <div class="text-center">Lịch khai giảng HSK 3 / HSKK </div>
+            <div class="text-center">Lịch khai giảng {{ $course->title }}</div>
         </div>
         <div class="mr-10">
             <img alt="" src="{{ asset('theme_client/images/lich-khai-giang_1_4.jpg') }}" style="width: 100%">
@@ -595,26 +611,19 @@
         <div class="clear"></div>
     </div>
 </div>
+@if($course->descriptionDocument)
 <div class="bg-w-1">
     <div class="container">
         <div class="">
             <div class="title-document">
-                <div class="text-center">Tài liệu học khóa học HSK 3</div>
+                <div class="text-center">Tài liệu {{ $course->title }}</div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-6">
                     <img src="{{ asset('theme_client/images/giao-trinh-boya_7_1.jpg') }}" alt="Tài liệu học khóa học HSK 3" style="width: 100%">
                 </div>
                 <div class="col-xs-12 col-md-6">
-                    <p>Trung tâm tiếng Trung SOFL giảng dạy dựa trên&nbsp;bộ giáo trình Boya mới, được xuất bản tại đại học Ngôn ngữ Bắc Kinh. Giáo trình được sử dụng rất nhiều ở Việt Nam và các trường đại học nổi tiếng trên thế giới.</p>
-                    <div><strong>Giáo trình có một số ưu điểm nổi bật như :&nbsp;</strong></div>
-                    <div>
-                        <p dir="ltr">+ Chủ đề hội thoại và từ vựng sát thực tế, mang tính ứng dụng cao<br>
-                            + Lượng kiến thức lớn, đáp ứng nhu cầu học trong thời gian ngắn<br>
-                            + Hệ thống ngữ pháp chặt chẽ<br>
-                            + Có bộ sách bài tập đi kèm để học sinh dễ dàng ôn tập và mở rộng kiến thức<br>
-                            + Mỗi bài học đều có file nghe, luyện viết chữ giúp học sinh học toàn diện 4 kỹ năng nghe nói đọc viết</p>
-                    </div>
+                    {!! $course->descriptionDocument !!}
                 </div>
             </div>
         </div>
@@ -626,8 +635,7 @@
                 <div class="col-md-8 resource-document-right">
                     <i class="fa fa-quote-left"></i>
                     <div class="desc">
-                        Học ngoại ngữ điều quan trọng nhất là tìm được nguồn tài liệu hay, chuẩn.
-                        Tài liệu học giúp bạn nâng cao thêm kién thức, giải thích thêm kiến thức khó, tổng hợp kiến thức trong suốt quá trình,... giúp bạn học dễ dàng hơn.
+                        {{ $course->quote }}
                     </div>
                     <div class="text-right">
                         <i class="fa fa-quote-right fr"></i>
@@ -635,50 +643,27 @@
                 </div>
             </div>
             <div class="row" style="margin-top: 40px">
+                @if($course->resources)
+                @foreach(json_decode($course->resources) as $key => $resource)
                 <div class="col-xs-12 col-md-6">
                     <a target="_blank">
                         <div class="step-resource-course">
-                            <div class="step-number">01</div> Tuyển tập bộ đề thi HSK 3 “cực sát” năm 2022
-                        </div>
+                            <div class="step-number">
+                                @if($key < 9)
+                                    0{{$key + 1}}
+                                    @else
+                                    {{$key + 1}}
+                                    @endif
+                                    </div>
+                                    Tuyển tập bộ đề thi HSK 3 “cực sát” năm 2022
+                            </div>
                     </a>
                 </div>
-                <div class="col-xs-12 col-md-6">
-                    <a target="_blank">
-                        <div class="step-resource-course">
-                            <div class="step-number">02</div> Giáo trình tập viết chữ Hán bản pdf (Có Link tải sách)
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <a target="_blank">
-                        <div class="step-resource-course">
-                            <div class="step-number">03</div> Giáo trình 301 câu đàm thoại tiếng Hoa PDF, MP3
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <a target="_blank">
-                        <div class="step-resource-course">
-                            <div class="step-number">04</div> Miễn phí tải bộ giáo trình BOYA Sơ cấp và Trung cấp pdf
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <a target="_blank">
-                        <div class="step-resource-course">
-                            <div class="step-number">05</div> File nghe tiếng Trung audio MP3 quyển (MỚI NHẤT)
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <a target="_blank">
-                        <div class="step-resource-course">
-                            <div class="step-number">06</div> Cách cài bộ gõ tiếng Trung dễ dàng trên win 7, 10
-                        </div>
-                    </a>
-                </div>
+                @endforeach
+                @endif
             </div>
         </div>
     </div>
 </div>
+@endif
 @endsection

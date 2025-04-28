@@ -8,6 +8,7 @@ use App\Models\Pages;
 use App\Models\Teachers;
 use App\Models\VideoStudent;
 use App\Models\CourseTeacher;
+use App\Models\Courses;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -37,11 +38,13 @@ class HomeController extends Controller
 
     public function courses()
     {
-        return view('client.courses');
+        $courses = Courses::query()->get();
+        return view('client.courses', compact('courses'));
     }
 
-    public function coursesDetail()
+    public function coursesDetail($slug)
     {
-        return view('client.courses-detail');
+        $course = Courses::query()->where('slug', $slug)->first();
+        return view('client.courses-detail', compact('course'));
     }
 }

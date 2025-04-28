@@ -12,8 +12,8 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 // Client
 Route::get('/', 'Client\HomeController@index')->name('home');
 Route::get('/profile-giao-vien/{slug}', 'Client\HomeController@profile')->name('profile');
-Route::get('/courses', 'Client\HomeController@courses')->name('courses');
-Route::get('/courses-detail', 'Client\HomeController@coursesDetail')->name('courses-detail');
+Route::get('/khoa-hoc', 'Client\HomeController@courses')->name('courses');
+Route::get('/khoa-hoc/{slug}', 'Client\HomeController@coursesDetail')->name('courses-detail');
 Route::get('/gioi-thieu-trung-tam-hua-hua', 'Client\HomeController@detailCenterHuaHua')->name('detail-center');
 
 // Admin route
@@ -57,7 +57,7 @@ Route::group(
             Route::post('delete/{id}', 'Admin\DashboardController@deleteVideoStudent')->name('delete');
         });
 
-        // Quan ly video hoc vien
+        // Quan ly khoa hoc giao vien
         Route::group(['prefix' => 'courses/teacher', 'as' => 'courses.teacher.'], function () {
             Route::get('{id}/index', 'Admin\CourseTeacherController@listCoursesTeacher')->name('index');
             Route::get('{id}/add', 'Admin\CourseTeacherController@addCourseTeacher')->name('add');
@@ -65,6 +65,16 @@ Route::group(
             Route::get('{id}/detail', 'Admin\CourseTeacherController@detailCourseTeacher')->name('detail');
             Route::post('{id}/detail', 'Admin\CourseTeacherController@updateCourseTeacher')->name('update');
             Route::post('{id}/delete', 'Admin\CourseTeacherController@deleteCourseTeacher')->name('delete');
+        });
+
+        // Quan ly khoa hoc trung tam
+        Route::group(['prefix' => 'courses', 'as' => 'courses.'], function () {
+            Route::get('index', 'Admin\CoursesController@listCourses')->name('index');
+            Route::get('add', 'Admin\CoursesController@addCourse')->name('add');
+            Route::post('add', 'Admin\CoursesController@createCourse')->name('create');
+            Route::get('detail/{id}', 'Admin\CoursesController@detailCourse')->name('detail');
+            Route::post('detail/{id}', 'Admin\CoursesController@updateCourse')->name('update');
+            Route::post('delete', 'Admin\CoursesController@deleteCourse')->name('delete');
         });
     }
 );

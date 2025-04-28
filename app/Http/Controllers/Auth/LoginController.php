@@ -75,7 +75,7 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credentialsEmail)) {
-            return view('admin.dashboard.index');
+            return redirect()->route('courses.index');
         }
 
         return response()->json([

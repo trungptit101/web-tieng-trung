@@ -10,6 +10,14 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
+                    <a href="{{ route('courses.index') }}" class="nav-link {{ Route::is('courses.*')? 'active' : '' }}">
+                        <i class="nav-icon far fa-file-alt"></i>
+                        <p>
+                            Quản Lý Khoá Học
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('banners.index') }}" class="nav-link {{ Route::is('banners.*')? 'active' : '' }}">
                         <i class="nav-icon fas fa-image"></i>
                         <p>

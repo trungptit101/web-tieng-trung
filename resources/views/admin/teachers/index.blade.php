@@ -60,7 +60,7 @@
                                             <td>{{ $teacher->phoneNumber }}</td>
                                             <td style="max-width: 400px">{!! $teacher->introduce !!}</td>
                                             <td>{!! $teacher->skills !!}</td>
-                                            <td style="min-width: 100px; font-weight: bold; color: #17a2b8;">
+                                            <td style="min-width: 100px; font-weight: bold; color: #f05a22;">
                                                 <a href="{{ route('courses.teacher.index', $teacher->id) }}">{!! \App\Models\Teachers::getCountCourse($teacher->id) !!} khoá học</a>
                                             </td>
                                             <td>

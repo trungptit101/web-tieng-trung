@@ -62,11 +62,20 @@
     .video-item .title {
         font-size: 18px;
         font-weight: 700;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .video-item .desc {
         font-size: 15px;
         font-weight: 600;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        height: 50px;
+        overflow: hidden;
     }
 
     .video-item .more-detail {
@@ -80,6 +89,10 @@
         padding: 10px 20px;
         color: #ffffff;
         cursor: pointer;
+    }
+    .video-item .more-detail a {
+        text-decoration: none;
+        color: #fff;
     }
 
     .video-item .title::after {
@@ -113,54 +126,18 @@
         <section class="list-course">
             <div class="header">KHOÁ HỌC</div>
             <div class="video-grid">
+                @foreach($courses as $course)
                 <div class="video-item">
-                    <img src="{{ asset('theme_client/images/course1.png') }}" />
+                    <a href="{{ route('courses-detail', $course->slug) }}"><img src="{{ asset($course->avatar) }}" /></a>
                     <div class="title">
-                        KHOÁ TIẾNG TRUNG HSK 3
+                        {{ $course->title }}
                     </div>
-                    <div class="desc">Toàn diện 4 kỹ năng nghe - nói - đọc - viết trong 5 tháng</div>
-                    <div class="more-detail">XEM CHI TIẾT</div>
-                </div>
-                <div class="video-item">
-                    <img src="{{ asset('theme_client/images/course2.jpg') }}" />
-                    <div class="title">
-                        KHOÁ TIẾNG TRUNG HSK 4
+                    <div class="desc">{!! $course->description !!}</div>
+                    <div class="more-detail">
+                        <a href="{{ route('courses-detail', $course->slug) }}">XEM CHI TIẾT</a>
                     </div>
-                    <div class="desc">Tích luỹ 1200 từ vựng và 150 cấu trúc ngữ pháp trình độ HSK 4</div>
-                    <div class="more-detail">XEM CHI TIẾT</div>
                 </div>
-                <div class="video-item">
-                    <img src="{{ asset('theme_client/images/course3.jpg') }}" />
-                    <div class="title">
-                        HỌC TIẾNG TRUNG ONLINE
-                    </div>
-                    <div class="desc">Toàn diện 4 kỹ năng NGHE - ĐỌC - NÓI - VIẾT, lích học linh hoạt, Tương tác trục tiếp</div>
-                    <div class="more-detail">XEM CHI TIẾT</div>
-                </div>
-                <div class="video-item">
-                    <img src="{{ asset('theme_client/images/course1.png') }}" />
-                    <div class="title">
-                        KHOÁ TIẾNG TRUNG HSK 3
-                    </div>
-                    <div class="desc">Toàn diện 4 kỹ năng nghe - nói - đọc - viết trong 5 tháng</div>
-                    <div class="more-detail">XEM CHI TIẾT</div>
-                </div>
-                <div class="video-item">
-                    <img src="{{ asset('theme_client/images/course2.jpg') }}" />
-                    <div class="title">
-                        KHOÁ TIẾNG TRUNG HSK 4
-                    </div>
-                    <div class="desc">Tích luỹ 1200 từ vựng và 150 cấu trúc ngữ pháp trình độ HSK 4</div>
-                    <div class="more-detail">XEM CHI TIẾT</div>
-                </div>
-                <div class="video-item">
-                    <img src="{{ asset('theme_client/images/course3.jpg') }}" />
-                    <div class="title">
-                        HỌC TIẾNG TRUNG ONLINE
-                    </div>
-                    <div class="desc">Toàn diện 4 kỹ năng NGHE - ĐỌC - NÓI - VIẾT, lích học linh hoạt, Tương tác trục tiếp</div>
-                    <div class="more-detail">XEM CHI TIẾT</div>
-                </div>
+                @endforeach
             </div>
         </section>
     </div>
