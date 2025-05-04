@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banners;
 use App\Models\Pages;
+use App\Models\Contact;
 use App\Models\Teachers;
 use App\Models\VideoStudent;
 use App\Models\RegisterAdvise;
@@ -255,9 +256,34 @@ class DashboardController extends Controller
         return redirect()->route('videos.student.index')->with('success', 'Thêm video học viên thành công!');
     }
 
-    public function listRegister(Request $request) {
+    public function listRegister(Request $request)
+    {
         $forms = RegisterAdvise::query()
             ->orderByDesc('id')->get();
         return view('admin.register.index', compact('forms'));
+    }
+
+    public function detailContact(Request $request)
+    {
+        $contact = Contact::where('slug', 'lien-he')->first();
+        if (empty($contact)) {
+            $contact = new Contact();
+            $contact->contact = "";
+            $contact->slug = "lien-he";
+            $contact->save();
+        }
+        return view('admin.contact.detail', compact('contact'));
+    }
+
+    public function updateContact(Request $request)
+    {
+        try {
+            $contact = Contact::where('slug', 'lien-he')->first();
+            $contact->contact = $request->input('contact');
+            $contact->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(["error" => $e->getMessage()]);
+        }
+        return redirect()->route('contact.detail')->with('success', 'Cập nhật thông tin liên hệ thành công!');
     }
 }

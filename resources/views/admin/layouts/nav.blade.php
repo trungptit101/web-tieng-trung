@@ -65,6 +65,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('contact.detail') }}" class="nav-link {{ Route::is('contact.*')? 'active' : '' }}">
+                        <i class="nav-icon fas fa-phone"></i>
+                        <p>
+                            Quản Lý Liên Hệ
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

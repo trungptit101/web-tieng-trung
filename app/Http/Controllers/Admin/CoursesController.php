@@ -62,6 +62,14 @@ class CoursesController extends Controller
                 $course->avatar = '/uploads/courses/' . $filename;
             }
 
+            if ($request->hasFile('calendarOpening')) {
+                $file = $request->file('calendarOpening');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $filePath = 'uploads/courses-opening/';
+                $file->move($filePath, $filename);
+                $course->calendarOpening = '/uploads/courses-opening/' . $filename;
+            }
+
             $titles = $request->input('resource_titles', []);
             $links = $request->input('resource_links', []);
             $resources = array_map(function ($title, $link) {
@@ -121,6 +129,14 @@ class CoursesController extends Controller
                 $filePath = 'uploads/courses/';
                 $file->move($filePath, $filename);
                 $course->avatar = '/uploads/courses/' . $filename;
+            }
+
+            if ($request->hasFile('calendarOpening')) {
+                $file = $request->file('calendarOpening');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $filePath = 'uploads/courses-opening/';
+                $file->move($filePath, $filename);
+                $course->calendarOpening = '/uploads/courses-opening/' . $filename;
             }
 
             $titles = $request->input('resource_titles', []);

@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 Auth::routes();
 
 // Login form
-Route::get('/login', 'Auth\LoginController@loginClient')->name('user.loginClient');
+Route::get('/dang-nhap', 'Auth\LoginController@loginClient')->name('user.loginClient');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 
 // Client
@@ -19,6 +19,8 @@ Route::get('/gioi-thieu-trung-tam-hua-hua', 'Client\HomeController@detailCenterH
 Route::get('/tai-lieu/{slug}', 'Client\HomeController@documentCourse')->name('document-course');
 Route::post('/dang-ky-tu-van', 'Client\HomeController@registerAdvise')->name('register-advise');
 Route::get('/dang-ky-tu-van-thanh-cong', 'Client\HomeController@registerAdviseSuccess')->name('register-advise-success');
+Route::get('/cach-viet-chu-han', 'Client\HomeController@writeWords')->name('write-words');
+Route::get('/lien-he', 'Client\HomeController@contactClient')->name('contact-client');
 
 // Admin route
 Route::group(
@@ -94,6 +96,12 @@ Route::group(
         // quan ly dang ky tu van
         Route::group(['prefix' => 'register', 'as' => 'register.'], function () {
             Route::get('/index', 'Admin\DashboardController@listRegister')->name('index');
+        });
+
+        // Trang lien he
+        Route::group(['prefix' => 'contact', 'as' => 'contact.'], function () {
+            Route::get('/detail', 'Admin\DashboardController@detailContact')->name('detail');
+            Route::post('/detail', 'Admin\DashboardController@updateContact')->name('update');
         });
     }
 );

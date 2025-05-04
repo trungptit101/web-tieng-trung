@@ -182,6 +182,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Ảnh lịch khai giảng
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control @error('calendarOpening') is-invalid @enderror" name="calendarOpening" placeholder="Ảnh lịch khai giảng">
+                                        @error('calendarOpening')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="" class="col-sm-2 col-form-label">
                                         Trích dẫn
                                     </label>

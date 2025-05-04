@@ -9,6 +9,7 @@ use App\Models\Teachers;
 use App\Models\VideoStudent;
 use App\Models\CourseTeacher;
 use App\Models\Courses;
+use App\Models\Contact;
 use App\Models\RegisterAdvise;
 use Illuminate\Http\Request;
 
@@ -79,5 +80,16 @@ class HomeController extends Controller
     {
         $course = Courses::query()->where('slug', $slug)->first();
         return view('client.courses-detail', compact('course'));
+    }
+
+    public function writeWords()
+    {
+        return view('client.write-words');
+    }
+
+    public function contactClient()
+    {
+        $contact = Contact::query()->where('slug', 'lien-he')->first();
+        return view('client.contact-client', compact('contact'));
     }
 }

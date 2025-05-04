@@ -604,11 +604,11 @@
             <div class="text-center">Lịch khai giảng {{ $course->title }}</div>
         </div>
         <div class="mr-10">
-            <img alt="" src="{{ asset('theme_client/images/lich-khai-giang_1_4.jpg') }}" style="width: 100%">
+            <img alt="" src="{{ asset($course->calendarOpening) }}" style="width: 100%">
         </div>
-        <div class="text-center watch-calendar-course">
+        <!-- <div class="text-center watch-calendar-course">
             Xem chi tiết lịch khai giảng
-        </div>
+        </div> -->
         <div class="clear"></div>
     </div>
 </div>

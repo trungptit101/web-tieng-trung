@@ -8,8 +8,13 @@
         <a href="/">Trang chủ</a>
         <a href="{{ route('studentTalkAbout') }}">Học viên nói gì về chúng tôi</a>
         <a href="{{ route('courses') }}">Khóa học</a>
-        <a onclick="scrollWriter()">Cách viết chữ Hán</a>
-        <a href="">Liên hệ</a>
+        <a href="{{ route('write-words') }}">Cách viết chữ Hán</a>
+        <a href="{{ route('contact-client') }}">Liên hệ</a>
+        @if (Auth::check())
+        <a href="{{ route('courses.index') }}">Quản Trị</a>
+        @else
+        <a href="{{ route('user.loginClient') }}">Đăng Nhập</a>
+        @endif
     </nav>
 </header>
 
