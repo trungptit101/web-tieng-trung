@@ -340,7 +340,7 @@
     .controls button {
         padding: 8px 15px;
         margin: 0 5px;
-        background: #6ab7f5;
+        background: #2da1ff;
         color: white;
         border: none;
         border-radius: 5px;
@@ -349,7 +349,7 @@
     }
 
     .controls button:hover {
-        background: #4a9de2;
+        background: #0985e9;
     }
 
     @media (max-width: 600px) {

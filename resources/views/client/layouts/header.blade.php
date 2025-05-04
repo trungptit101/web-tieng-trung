@@ -5,11 +5,11 @@
         </a>
     </div>
     <nav>
-        <a href="/">Trang chủ</a>
-        <a href="{{ route('studentTalkAbout') }}">Học viên nói gì về chúng tôi</a>
-        <a href="{{ route('courses') }}">Khóa học</a>
-        <a href="{{ route('write-words') }}">Cách viết chữ Hán</a>
-        <a href="{{ route('contact-client') }}">Liên hệ</a>
+        <a class="{{ Route::is('home') ? 'link-active' : '' }}" href="/">Trang chủ</a>
+        <a class="{{ Route::is('studentTalkAbout') ? 'link-active' : '' }}" href="{{ route('studentTalkAbout') }}">Học viên nói gì về chúng tôi</a>
+        <a class="{{ Route::is('courses') ? 'link-active' : '' }}" href="{{ route('courses') }}">Khóa học</a>
+        <a class="{{ Route::is('write-words') ? 'link-active' : '' }}" href="{{ route('write-words') }}">Cách viết chữ Hán</a>
+        <a class="{{ Route::is('contact-client') ? 'link-active' : '' }}" href="{{ route('contact-client') }}">Liên hệ</a>
         @if (Auth::check())
         <a href="{{ route('courses.index') }}">Quản Trị</a>
         @else

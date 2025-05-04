@@ -28,7 +28,7 @@
 
     <link href="{{ asset('theme_client/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet"
-    href="{{ asset('/theme_client/home.css') }}">
+        href="{{ asset('/theme_client/home.css') }}">
 
     <!-- Favicon  -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -40,6 +40,7 @@
 
 <body class="page-template ltr">
     <div class="wrapper home-page" id="app">
+        <div class="custom-cursor"></div>
         @include('client.layouts.header')
         <div class="page-section">
             @yield('main')
@@ -50,5 +51,38 @@
     <script src="{{ asset('theme_client/bootstrap.min.js') }}"></script>
     @yield('script')
 </body>
+<script>
+    const cursor = document.querySelector('.custom-cursor');
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+    const speed = 0.2;
+
+    function animate() {
+        cursorX += (mouseX - cursorX) * speed;
+        cursorY += (mouseY - cursorY) * speed;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        requestAnimationFrame(animate);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    const links = document.querySelectorAll('.link');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            cursor.classList.add('hovered');
+        });
+        link.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hovered');
+        });
+    });
+
+    animate();
+</script>
 
 </html>
