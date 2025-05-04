@@ -12,7 +12,7 @@ class CoursesController extends Controller
 {
     public function listCourses(Request $request)
     {
-        $courses = Courses::query()->get();
+        $courses = Courses::query()->orderByDesc('id')->get();
         return view('admin.courses.index', compact('courses'));
     }
 
@@ -51,6 +51,8 @@ class CoursesController extends Controller
             $course->infomationCourse = $request->input('infomationCourse');
             $course->outputCourse = $request->input('outputCourse');
             $course->interestCourse = $request->input('interestCourse');
+            $course->descriptionDocument = $request->input('descriptionDocument');
+            $course->quote = $request->input('quote');
             $course->slug = Str::slug($request->input('title'));
             if ($request->hasFile('avatar')) {
                 $file = $request->file('avatar');
@@ -59,6 +61,16 @@ class CoursesController extends Controller
                 $file->move($filePath, $filename);
                 $course->avatar = '/uploads/courses/' . $filename;
             }
+
+            $titles = $request->input('resource_titles', []);
+            $links = $request->input('resource_links', []);
+            $resources = array_map(function ($title, $link) {
+                return [
+                    'title' => $title,
+                    'link' => $link
+                ];
+            }, $titles, $links);
+            $course->resources = json_encode($resources);
             $course->save();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(["error" => $e->getMessage()]);

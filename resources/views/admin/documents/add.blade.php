@@ -51,7 +51,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <!-- <div class="form-group row">
                                     <label for="inputName" class="col-sm-2 col-form-label">
                                         Hình ảnh
                                         <span class="text-danger">*</span>
@@ -62,7 +62,7 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success float-right btn-sm">

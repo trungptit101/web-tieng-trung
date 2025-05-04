@@ -116,7 +116,6 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-2 col-form-label">
                                         Mô tả khoá học
-                                        <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-10">
                                         <textarea placeholder="Mô tả khoá học" id="description" class="form-control ckeditor description @error(" description") is-invalid @enderror" name="description">

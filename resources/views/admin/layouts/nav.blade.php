@@ -25,14 +25,14 @@
                         </p>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="{{ route('documents.index') }}" class="nav-link {{ Route::is('documents.*')? 'active' : '' }}">
-                        <i class="nav-icon far fa-file-pdf"></i>
+                <li class="nav-item">
+                    <a href="{{ route('register.index') }}" class="nav-link {{ Route::is('register.*')? 'active' : '' }}">
+                        <i class="nav-icon fa fa-registered"></i>
                         <p>
                             Đăng Ký Tư Vấn
                         </p>
                     </a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('banners.index') }}" class="nav-link {{ Route::is('banners.*')? 'active' : '' }}">
                         <i class="nav-icon fas fa-image"></i>

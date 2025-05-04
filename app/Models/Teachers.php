@@ -11,7 +11,7 @@ class Teachers extends Model
 
     protected $fillable = ['userName', 'avatar', 'skills', 'phoneNumber', 'email', 'introduce', 'banner', 'slug'];
 
-    public function getCountCourse($teacherId)
+    public static function getCountCourse($teacherId)
     {
         $countCourses = CourseTeacher::query()->where('teacherId', $teacherId)->count();
         if (isset($countCourses))

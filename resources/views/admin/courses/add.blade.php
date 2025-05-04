@@ -1,5 +1,67 @@
 @extends('admin.master')
 @section('title','Thêm khoá học')
+<style>
+    .resource-list {
+        margin-top: 10px;
+    }
+
+    .resource-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .resource-item input {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .resource-item button {
+        background: #ff4444;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .resource-item button:hover {
+        background: #cc0000;
+    }
+
+    .add-resource-btn {
+        background: #0085ef;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 15px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .add-resource-btn:hover {
+        background: #0468bb;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(45deg, #f44336, #ff7043);
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
+    }
+</style>
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
@@ -54,7 +116,6 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-2 col-form-label">
                                         Mô tả khoá học
-                                        <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-10">
                                         <textarea placeholder="Mô tả khoá học" id="description" class="form-control ckeditor description @error(" description") is-invalid @enderror" name="description"></textarea>

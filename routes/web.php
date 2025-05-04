@@ -78,7 +78,7 @@ Route::group(
             Route::post('add', 'Admin\CoursesController@createCourse')->name('create');
             Route::get('detail/{id}', 'Admin\CoursesController@detailCourse')->name('detail');
             Route::post('detail/{id}', 'Admin\CoursesController@updateCourse')->name('update');
-            Route::post('delete', 'Admin\CoursesController@deleteCourse')->name('delete');
+            Route::post('delete/{id}', 'Admin\CoursesController@deleteCourse')->name('delete');
         });
 
         // tai lieu
@@ -89,6 +89,11 @@ Route::group(
             Route::get('/detail/{id}', 'Admin\DocumentsController@detail')->name('detail');
             Route::post('/delete/{id}', 'Admin\DocumentsController@delete')->name('delete');
             Route::post('/detail/{id}', 'Admin\DocumentsController@update')->name('update');
+        });
+
+        // quan ly dang ky tu van
+        Route::group(['prefix' => 'register', 'as' => 'register.'], function () {
+            Route::get('/index', 'Admin\DashboardController@listRegister')->name('index');
         });
     }
 );

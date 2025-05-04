@@ -8,6 +8,7 @@ use App\Models\Banners;
 use App\Models\Pages;
 use App\Models\Teachers;
 use App\Models\VideoStudent;
+use App\Models\RegisterAdvise;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -252,5 +253,11 @@ class DashboardController extends Controller
             return redirect()->back()->withErrors(["error" => $e->getMessage()]);
         }
         return redirect()->route('videos.student.index')->with('success', 'Thêm video học viên thành công!');
+    }
+
+    public function listRegister(Request $request) {
+        $forms = RegisterAdvise::query()
+            ->orderByDesc('id')->get();
+        return view('admin.register.index', compact('forms'));
     }
 }
