@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('/theme_admin/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('/theme_admin/css/jquery.datetimepicker.css') }}">
     <script src="{{ asset('/theme_admin/vendor/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('/theme_admin/vendor/ckfinder/ckfinder.js') }}"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
 

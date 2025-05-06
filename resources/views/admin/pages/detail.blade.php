@@ -33,7 +33,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-10">
-                                        <textarea placeholder="Tiêu đề" id="title" class="form-control title @error("title") is-invalid @enderror" name="title">{{ $page->title }}</textarea>
+                                        <textarea placeholder="Tiêu đề" id="title" class="form-control title @error(" title") is-invalid @enderror" name="title">{{ $page->title }}</textarea>
                                         @error("title")
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -45,7 +45,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-10">
-                                        <textarea placeholder="Đường dẫn video" id="link" class="form-control link @error("link") is-invalid @enderror" name="link">{{ $page->link }}</textarea>
+                                        <textarea placeholder="Đường dẫn video" id="link" class="form-control link @error(" link") is-invalid @enderror" name="link">{{ $page->link }}</textarea>
                                         @error("link")
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -57,7 +57,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-10">
-                                        <textarea placeholder="Nội dung" id="content" class="form-control ckeditor content @error("content") is-invalid @enderror" name="content">{{ $page->content }}</textarea>
+                                        <textarea placeholder="Nội dung" id="content" class="form-control ckeditor content @error(" content") is-invalid @enderror" name="content">{{ $page->content }}</textarea>
                                         @error("content")
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -84,12 +84,12 @@
 <script type="text/javascript">
     CKEDITOR.replace('content', {
         height: 500,
-        filebrowserBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html',
-        filebrowserImageBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html?type=Images',
-        filebrowserFlashBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html?type=Flash',
-        filebrowserUploadUrl: '/pulic/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-        filebrowserImageUploadUrl: '/public/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-        filebrowserFlashUploadUrl: '/public/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+        filebrowserBrowseUrl: '/theme_admin/vendor/ckfinder/ckfinder.html',
+        filebrowserImageBrowseUrl: '/theme_admin/vendor/ckfinder/ckfinder.html?type=Images',
+        filebrowserFlashBrowseUrl: '/theme_admin/vendor/ckfinder/ckfinder.html?type=Flash',
+        filebrowserUploadUrl: '/public/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl: '/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl: '/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
     });
     CKEDITOR.config.extraPlugins = 'colorbutton';
 </script>

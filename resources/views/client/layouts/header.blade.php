@@ -13,7 +13,7 @@
         @if (Auth::check())
         <a href="{{ route('courses.index') }}">Quản Trị</a>
         @else
-        <a href="{{ route('user.loginClient') }}">Đăng Nhập</a>
+        <a class="{{ Route::is('user.loginClient') ? 'link-active' : '' }}" href="{{ route('user.loginClient') }}">Đăng Nhập</a>
         @endif
     </nav>
 </header>
