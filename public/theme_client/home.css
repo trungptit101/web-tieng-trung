@@ -69,30 +69,29 @@ button:focus-visible {
 }
 
 /* Header */
-header {
+.header-client {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
     position: sticky;
     top: 0;
     z-index: 1020;
 }
 
-header .logo img {
+.header-client .logo img {
     border-radius: 50%;
     width: 60px;
 }
 
-header nav {
+.header-client nav {
     display: flex;
     gap: 20px;
 }
 
-header nav a {
+.header-client nav a {
     text-decoration: none;
     color: #333;
     font-size: 16px;
@@ -101,8 +100,12 @@ header nav a {
     cursor: pointer;
 }
 
-header nav a:hover {
+.header-client nav a:hover {
     color: #ff6200 !important;
+    text-decoration: none;
+}
+
+.title_introduce:hover {
     text-decoration: none;
 }
 
@@ -333,15 +336,15 @@ header nav a:hover {
 
 /* Tablets (768px and below) */
 @media (max-width: 768px) {
-    header {
+    .header-client {
         flex-direction: column;
         gap: 10px;
     }
 
-    header nav {
+    .header-client nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 15px;
     }
 
     .hero h1 {
@@ -385,11 +388,11 @@ header nav a:hover {
 
 /* Mobile (480px and below) */
 @media (max-width: 480px) {
-    header .logo {
+    .header-client .logo {
         font-size: 1.25rem;
     }
 
-    header nav a {
+    .header-client nav a {
         font-size: 0.75rem;
     }
 

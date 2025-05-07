@@ -20,6 +20,7 @@ Route::get('/tai-lieu/{slug}', 'Client\HomeController@documentCourse')->name('do
 Route::post('/dang-ky-tu-van', 'Client\HomeController@registerAdvise')->name('register-advise');
 Route::get('/dang-ky-tu-van-thanh-cong', 'Client\HomeController@registerAdviseSuccess')->name('register-advise-success');
 Route::get('/cach-viet-chu-han', 'Client\HomeController@writeWords')->name('write-words');
+Route::get('/giao-vien-tai-nang-tam-huyet', 'Client\HomeController@listTeachers')->name('list-teachers');
 Route::get('/lien-he', 'Client\HomeController@contactClient')->name('contact-client');
 
 // Admin route

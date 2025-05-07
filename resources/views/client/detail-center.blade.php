@@ -12,7 +12,7 @@
     }
 
     .detail-center .header {
-        font-size: 24px;
+        font-size: 30px;
         font-weight: bold;
         color: #f05a22;
         padding: 30px 0;
@@ -30,9 +30,7 @@
     }
 
     .detail-center h2 {
-        font-size: 24px;
         font-weight: bold;
-        margin-bottom: 30px;
         text-transform: uppercase;
     }
 </style>
@@ -41,8 +39,27 @@
 <div class="detail-center-container">
     <div class="container">
         <section class="detail-center">
-            <div class="header">{{ $page->title }}</div>
-            <div>{!! $page->content !!}</div>
+            <div class="header">
+                <h2>
+                    <span style="color: #F15928; text-transform: uppercase;">
+                        <span>Giới Thiệu
+                            <span style="color: #25366a">HUA HUA</span>
+                        </span>
+                    </span>
+                </h2>
+            </div>
+            <div>
+                <iframe
+                    style="width: 100%; height: 400px; max-width: 600px;"
+                    src="{{ $page->link }}"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div style="margin-top: 30px">{!! $page->content !!}</div>
         </section>
     </div>
 </div>

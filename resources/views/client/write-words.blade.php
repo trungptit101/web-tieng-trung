@@ -185,7 +185,7 @@
         </div>
         <div id="hanzi-writer"></div>
         <div class="controls">
-            <button onclick="animateCharacter()">XEM HOẠT ẢNH</button>
+            <!-- <button onclick="animateCharacter()">XEM HOẠT ẢNH</button> -->
             <button onclick="practiceCharacter()">LUYỆN VIẾT</button>
         </div>
     </div>
@@ -217,14 +217,10 @@
                 strokeAnimationSpeed: 1,
                 strokeHighlightSpeed: 2,
                 drawingWidth: 40,
+                strokeColor: '#f05a22', // Màu đỏ cho tất cả các nét
                 onLoadCharDataSuccess: (data) => {
                     const totalStrokes = data.strokes.length;
-                    const halfStrokes = Math.ceil(totalStrokes / 2); // Xác định điểm chia đôi số nét
-
-                    // Tùy chỉnh màu sắc cho từng nét
-                    writer.strokeColors = data.strokes.map((_, index) => {
-                        return index < halfStrokes ? '#000000' : '#ff0000'; // Nửa trên đen, nửa dưới đỏ
-                    });
+                    writer.strokeColors = Array(totalStrokes).fill('#f05a22'); // Đặt tất cả nét thành màu đỏ
                 }
             });
         }

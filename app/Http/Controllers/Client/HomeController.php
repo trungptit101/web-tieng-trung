@@ -17,9 +17,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $teachers = Teachers::query()->get();
+        $teachers = Teachers::query()->orderBy('created_at', 'DESC')->limit(4)->get();
         $banners = Banners::query()->get();
-        $videosStudent = VideoStudent::query()->get();
+        $videosStudent = VideoStudent::query()->orderBy('created_at', 'DESC')->limit(8)->get();
         $page = Pages::Where('slug', 'gioi-thieu-trung-tam-hua-hua')->first();
         return view('client.home', compact('banners', 'page', 'teachers', 'videosStudent'));
     }
@@ -30,6 +30,12 @@ class HomeController extends Controller
         if(!isset($teacher)) return redirect()->back();
         $courses = CourseTeacher::query()->where('teacherId', $teacher->id)->get();
         return view('client.profile', compact('teacher', 'courses'));
+    }
+
+    public function listTeachers()
+    {
+        $teachers = Teachers::query()->orderBy('created_at', 'DESC')->get();
+        return view('client.list-teachers', compact('teachers'));
     }
 
     public function detailCenterHuaHua()

@@ -1,21 +1,24 @@
 <header>
-    <div class="logo">
-        <a href="/">
-            <img src="{{ asset('/theme_client/images/logo.jpg') }}">
-        </a>
+    <div class="container header-client">
+        <div class="logo">
+            <a href="/">
+                <img src="{{ asset('/theme_client/images/logo.jpg') }}">
+            </a>
+        </div>
+        <nav>
+            <a class="{{ Route::is('home') ? 'link-active' : '' }}" href="/">Trang chủ</a>
+            <a class="{{ Route::is('list-teachers') ? 'link-active' : '' }}" href="{{ route('list-teachers') }}">Giáo viên</a>
+            <a class="{{ Route::is('studentTalkAbout') ? 'link-active' : '' }}" href="{{ route('studentTalkAbout') }}">Học viên</a>
+            <a class="{{ Route::is('courses') ? 'link-active' : '' }}" href="{{ route('courses') }}">Khóa học</a>
+            <a class="{{ Route::is('write-words') ? 'link-active' : '' }}" href="{{ route('write-words') }}">Cách viết chữ Hán</a>
+            <a class="{{ Route::is('contact-client') ? 'link-active' : '' }}" href="{{ route('contact-client') }}">Liên hệ</a>
+            @if (Auth::check())
+            <a href="{{ route('courses.index') }}">Quản Trị</a>
+            @else
+            <a class="{{ Route::is('user.loginClient') ? 'link-active' : '' }}" href="{{ route('user.loginClient') }}">Đăng Nhập</a>
+            @endif
+        </nav>
     </div>
-    <nav>
-        <a class="{{ Route::is('home') ? 'link-active' : '' }}" href="/">Trang chủ</a>
-        <a class="{{ Route::is('studentTalkAbout') ? 'link-active' : '' }}" href="{{ route('studentTalkAbout') }}">Học viên nói gì về chúng tôi</a>
-        <a class="{{ Route::is('courses') ? 'link-active' : '' }}" href="{{ route('courses') }}">Khóa học</a>
-        <a class="{{ Route::is('write-words') ? 'link-active' : '' }}" href="{{ route('write-words') }}">Cách viết chữ Hán</a>
-        <a class="{{ Route::is('contact-client') ? 'link-active' : '' }}" href="{{ route('contact-client') }}">Liên hệ</a>
-        @if (Auth::check())
-        <a href="{{ route('courses.index') }}">Quản Trị</a>
-        @else
-        <a class="{{ Route::is('user.loginClient') ? 'link-active' : '' }}" href="{{ route('user.loginClient') }}">Đăng Nhập</a>
-        @endif
-    </nav>
 </header>
 
 <div class="carousel-container">

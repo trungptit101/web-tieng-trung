@@ -110,6 +110,10 @@
         padding-bottom: 20px;
     }
 
+    .video-section a:hover {
+        text-decoration: none;
+    }
+
     .video-section .video-title {
         font-weight: bold;
         padding: 30px 0;
@@ -165,6 +169,10 @@
         color: #F15928;
         padding: 30px 0;
         text-align: center;
+    }
+
+    .write-words-title a:hover {
+        text-decoration: none;
     }
 
     .write-words .write-words-title::after {
@@ -367,6 +375,10 @@
             font-size: 20px;
         }
     }
+
+    .title-list-teacher:hover {
+        text-decoration: none;
+    }
 </style>
 @endsection
 @section('main')
@@ -388,12 +400,20 @@
             <div class="col-12 col-md-6 col-lg-6 video-right">
                 <div class="col medium-6 small-12 large-6">
                     <div class="col-inner text-left">
-                        <h2 style="text-align: left;"><span style="color: #F15928; text-transform: uppercase;"><strong>{{ $page->title }}</strong></span></h2>
+                        <a href="/gioi-thieu-trung-tam-hua-hua" class="title_introduce" target="_blank">
+                            <h2 style="text-align: left;">
+                                <span style="color: #F15928; text-transform: uppercase;">
+                                    <strong>Giới Thiệu
+                                        <span style="color: #25366a">HUA HUA</span>
+                                    </strong>
+                                </span>
+                            </h2>
+                        </a>
                         <div class="is-divider divider clearfix"></div>
                         <div class="content-introduce">
                             {!! $page->content !!}
                         </div>
-                        <a href="/gioi-thieu-trung-tam-hua-hua" target="_self" class="btn-more">
+                        <a href="/gioi-thieu-trung-tam-hua-hua" target="_blank" class="btn-more">
                             <span>XEM THÊM</span>
                         </a>
                     </div>
@@ -405,7 +425,9 @@
 @endif
 
 <div class="container">
-    <div class="section-title">20+ <span style="color: #25366a">GIÁO VIÊN TÀI NĂNG TÂM HUYẾT</span></div>
+    <a href="{{ route('list-teachers') }}" class="title-list-teacher">
+        <div class="section-title">20+ <span style="color: #25366a">GIÁO VIÊN TÀI NĂNG TÂM HUYẾT</span></div>
+    </a>
 
     <div class="teacher-container">
         @foreach($teachers as $teacher)
@@ -422,7 +444,9 @@
 <div class="video-section-container">
     <div class="container">
         <section class="video-section">
-            <div class="video-title">HƠN <span class="highlight">100.000+</span> HỌC VIÊN TIN TƯỞNG LỰA CHỌN</div>
+            <a href="{{ route('studentTalkAbout') }}" target="_blank">
+                <div class="video-title">HƠN <span class="highlight">100.000+</span> HỌC VIÊN TIN TƯỞNG LỰA CHỌN</div>
+            </a>
             <div class="video-fixed-grid">
                 @foreach($videosStudent as $video)
                 <div class="video-item"><iframe src="{{ $video->video }}" allowfullscreen></iframe></div>
@@ -433,7 +457,13 @@
 </div>
 <div class="container">
     <section class="demand-study">
-        <div class="header">HỌC TIẾNG TRUNG THEO NHU CẦU CỦA BẠN</div>
+        <div class="header">
+            <span style="color: #F15928; text-transform: uppercase;">
+                <span>HỌC TIẾNG TRUNG
+                    <span style="color: #25366a">THEO NHU CẦU CỦA BẠN</span>
+                </span>
+            </span>
+        </div>
         <div class="content">
             <div>
                 <img src="{{ asset('theme_client/images/demand/2.png') }}" />
@@ -451,7 +481,15 @@
 </div>
 <section class="write-words" id="write-words">
     <div class="container">
-        <div class="write-words-title">CÁCH VIẾT CHỮ HÁN</div>
+        <div class="write-words-title">
+            <a href="{{ route('write-words') }}" target="_blank">
+                <span style="color: #F15928; text-transform: uppercase;">
+                    <span>CÁCH VIẾT
+                        <span style="color: #25366a">CHỮ HÁN</span>
+                    </span>
+                </span>
+            </a>
+        </div>
         <div class="content">
             <div class="search-container">
                 <img class="logo" src="{{ asset('/theme_client/images/logo.jpg') }}">
@@ -461,7 +499,7 @@
         </div>
         <div id="hanzi-writer"></div>
         <div class="controls">
-            <button onclick="animateCharacter()">XEM HOẠT ẢNH</button>
+            <!-- <button onclick="animateCharacter()">XEM HOẠT ẢNH</button> -->
             <button onclick="practiceCharacter()">LUYỆN VIẾT</button>
         </div>
     </div>
@@ -499,14 +537,10 @@
                 strokeAnimationSpeed: 1,
                 strokeHighlightSpeed: 2,
                 drawingWidth: 40,
+                strokeColor: '#f05a22', // Màu đỏ cho tất cả các nét
                 onLoadCharDataSuccess: (data) => {
                     const totalStrokes = data.strokes.length;
-                    const halfStrokes = Math.ceil(totalStrokes / 2); // Xác định điểm chia đôi số nét
-
-                    // Tùy chỉnh màu sắc cho từng nét
-                    writer.strokeColors = data.strokes.map((_, index) => {
-                        return index < halfStrokes ? '#000000' : '#ff0000'; // Nửa trên đen, nửa dưới đỏ
-                    });
+                    writer.strokeColors = Array(totalStrokes).fill('#f05a22'); // Đặt tất cả nét thành màu đỏ
                 }
             });
         }
