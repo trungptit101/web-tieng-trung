@@ -1,6 +1,7 @@
 @extends('client.layouts.master')
 @section('title', 'Trang chủ')
 @section('css')
+<link rel="stylesheet" href="{{ asset('/theme_client/swiper-bundle.min.css') }}" />
 <style>
     .video-container {
         padding: 60px 0;
@@ -68,8 +69,9 @@
         background-color: #fff;
         border-radius: 10px;
         padding: 20px;
-        width: calc(25% - 15px);
+        width: 100%;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ebebeb;
         text-align: center;
         cursor: pointer;
     }
@@ -124,12 +126,6 @@
 
     .video-section .video-title .highlight {
         color: #F15928 !important;
-    }
-
-    @media (max-width: 768px) {
-        .teacher-card {
-            width: 90%;
-        }
     }
 
     @media (max-width: 480px) {
@@ -413,6 +409,7 @@
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        text-align: center;
     }
 
     .video-item .desc {
@@ -428,7 +425,7 @@
     .video-item .more-detail {
         font-size: 15px;
         font-weight: 600;
-        background: #f05a22;
+        background: #F15928;
         width: fit-content;
         margin: 0px auto;
         margin-top: 10px;
@@ -448,7 +445,7 @@
         display: block;
         width: 80px;
         height: 3px;
-        background-color: #f05a22;
+        background-color: #F15928;
         margin: 5px auto;
     }
 
@@ -465,6 +462,61 @@
         .video-item iframe {
             height: 160px;
         }
+    }
+
+    .swiper {
+        width: 100%;
+        padding: 0 0 20px 0;
+    }
+
+    .swiper-teacher {
+        width: 100%;
+        padding: 0 0 20px 0;
+    }
+
+    .swiper-button-next,
+    .swiper-button-next-teacher,
+    .swiper-button-prev,
+    .swiper-button-prev-teacher {
+        color: #F15928;
+        transition: color 0.3s ease;
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-next-teacher:hover,
+    .swiper-button-prev:hover,
+    .swiper-button-prev-teacher:hover {
+        color: #F15928;
+    }
+
+    .swiper-pagination-bullet {
+        background: #F15928;
+        opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #F15928;
+    }
+
+    .swiper-button-next,
+    .swiper-button-next-teacher {
+        color: #F15928;
+        width: 50px;
+        font-weight: bold;
+        height: 50px;
+        top: 50%;
+        right: -50px;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-prev-teacher {
+        color: #F15928;
+        width: 50px;
+        font-weight: bold;
+        height: 50px;
+        top: 50%;
+        left: -50px;
     }
 </style>
 @endsection
@@ -516,7 +568,7 @@
         <div class="section-title">20+ <span style="color: #25366a">GIÁO VIÊN TÀI NĂNG TÂM HUYẾT</span></div>
     </a>
 
-    <div class="teacher-container">
+    <!-- <div class="teacher-container">
         @foreach($teachers as $teacher)
         <div class="teacher-card" onClick="openProfileTeacher('{{ $teacher->slug }}')">
             <img src="{{ $teacher->avatar }}" alt="{{ $teacher->userName }}" class="teacher-image">
@@ -526,6 +578,26 @@
             </div>
         </div>
         @endforeach
+    </div> -->
+
+    <div style="position: relative;">
+        <div class="swiper swiper-teacher">
+            <div class="swiper-wrapper">
+                @foreach($teachers as $teacher)
+                <div class="swiper-slide">
+                    <div class="teacher-card" onClick="openProfileTeacher('{{ $teacher->slug }}')">
+                        <img src="{{ $teacher->avatar }}" alt="{{ $teacher->userName }}" class="teacher-image">
+                        <div class="teacher-name">{{ $teacher->userName }}</div>
+                        <div class="teacher-info">
+                            {!! $teacher->skills !!}
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="swiper-button-prev swiper-button-prev-teacher"></div>
+        <div class="swiper-button-next swiper-button-next-teacher"></div>
     </div>
 </div>
 <div class="video-section-container">
@@ -553,19 +625,27 @@
                 </span>
             </a>
         </div>
-        <div class="video-grid">
-            @foreach($courses as $course)
-            <div class="video-item">
-                <a href="{{ route('courses-detail', $course->slug) }}"><img src="{{ asset($course->avatar) }}" /></a>
-                <div class="title">
-                    {{ $course->title }}
-                </div>
-                <div class="desc">{!! $course->description !!}</div>
-                <div class="more-detail">
-                    <a href="{{ route('courses-detail', $course->slug) }}">XEM CHI TIẾT</a>
+        <div style="position: relative;">
+            <div class="swiper swiper-course">
+                <div class="swiper-wrapper">
+                    @foreach($courses as $course)
+                    <div class="swiper-slide">
+                        <div class="video-item">
+                            <a href="{{ route('courses-detail', $course->slug) }}"><img src="{{ asset($course->avatar) }}" /></a>
+                            <div class="title">
+                                {{ $course->title }}
+                            </div>
+                            <div class="desc">{!! $course->description !!}</div>
+                            <div class="more-detail">
+                                <a href="{{ route('courses-detail', $course->slug) }}">XEM CHI TIẾT</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
-            @endforeach
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
     </div>
 </section>
@@ -598,6 +678,64 @@
 @endsection
 
 @section('script')
+<script src="{{ asset('/theme_client/swiper-bundle.min.js') }}"></script>
+<script>
+    const swiperTeacher = new Swiper('.swiper-teacher', {
+        loop: true,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.swiper-button-next-teacher',
+            prevEl: '.swiper-button-prev-teacher',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 4,
+            },
+        },
+    });
+
+    const swiperCourse = new Swiper('.swiper-course', {
+        loop: true,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+</script>
 <script>
     function openProfileTeacher(slug) {
         window.location.href = `/profile-giao-vien/${slug}`;
@@ -627,10 +765,10 @@
                 strokeAnimationSpeed: 1,
                 strokeHighlightSpeed: 2,
                 drawingWidth: 40,
-                strokeColor: '#f05a22', // Màu đỏ cho tất cả các nét
+                strokeColor: '#F15928', // Màu đỏ cho tất cả các nét
                 onLoadCharDataSuccess: (data) => {
                     const totalStrokes = data.strokes.length;
-                    writer.strokeColors = Array(totalStrokes).fill('#f05a22'); // Đặt tất cả nét thành màu đỏ
+                    writer.strokeColors = Array(totalStrokes).fill('#F15928'); // Đặt tất cả nét thành màu đỏ
                 }
             });
         }

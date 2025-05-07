@@ -90,6 +90,7 @@
         color: #ffffff;
         cursor: pointer;
     }
+
     .video-item .more-detail a {
         text-decoration: none;
         color: #fff;
@@ -124,7 +125,13 @@
 <div class="list-course-container">
     <div class="container">
         <section class="list-course">
-            <div class="header">KHOÁ HỌC</div>
+            <div class="header">
+                <span style="color: #F15928; text-transform: uppercase;">
+                    <span>HỌC TIẾNG TRUNG
+                        <span style="color: #25366a">THEO NHU CẦU CỦA BẠN</span>
+                    </span>
+                </span>
+            </div>
             <div class="video-grid">
                 @foreach($courses as $course)
                 <div class="video-item">
