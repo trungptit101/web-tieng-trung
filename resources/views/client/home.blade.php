@@ -158,8 +158,16 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .write-words {
+    .demand-study {
         background-color: #f2f2f2;
+        padding-bottom: 30px;
+    }
+
+    .demand-study a:hover {
+        text-decoration: none;
+    }
+
+    .write-words {
         padding-bottom: 30px;
     }
 
@@ -379,6 +387,85 @@
     .title-list-teacher:hover {
         text-decoration: none;
     }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .video-item {
+        background: #fff;
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .video-item img {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .video-item .title {
+        font-size: 18px;
+        font-weight: 700;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .video-item .desc {
+        font-size: 15px;
+        font-weight: 600;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        height: 50px;
+        overflow: hidden;
+    }
+
+    .video-item .more-detail {
+        font-size: 15px;
+        font-weight: 600;
+        background: #f05a22;
+        width: fit-content;
+        margin: 0px auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .video-item .more-detail a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .video-item .title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 3px;
+        background-color: #f05a22;
+        margin: 5px auto;
+    }
+
+    .video-item iframe {
+        width: 100%;
+        height: 180px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive: Điều chỉnh chiều cao iframe trên thiết bị nhỏ hơn */
+    @media (max-width: 576px) {
+        .video-item iframe {
+            height: 160px;
+        }
+    }
 </style>
 @endsection
 @section('main')
@@ -400,7 +487,7 @@
             <div class="col-12 col-md-6 col-lg-6 video-right">
                 <div class="col medium-6 small-12 large-6">
                     <div class="col-inner text-left">
-                        <a href="/gioi-thieu-trung-tam-hua-hua" class="title_introduce" target="_blank">
+                        <a href="/gioi-thieu-trung-tam-hua-hua" class="title_introduce">
                             <h2 style="text-align: left;">
                                 <span style="color: #F15928; text-transform: uppercase;">
                                     <strong>Giới Thiệu
@@ -413,7 +500,7 @@
                         <div class="content-introduce">
                             {!! $page->content !!}
                         </div>
-                        <a href="/gioi-thieu-trung-tam-hua-hua" target="_blank" class="btn-more">
+                        <a href="/gioi-thieu-trung-tam-hua-hua" class="btn-more">
                             <span>XEM THÊM</span>
                         </a>
                     </div>
@@ -444,7 +531,7 @@
 <div class="video-section-container">
     <div class="container">
         <section class="video-section">
-            <a href="{{ route('studentTalkAbout') }}" target="_blank">
+            <a href="{{ route('studentTalkAbout') }}">
                 <div class="video-title">HƠN <span class="highlight">100.000+</span> HỌC VIÊN TIN TƯỞNG LỰA CHỌN</div>
             </a>
             <div class="video-fixed-grid">
@@ -455,34 +542,37 @@
         </section>
     </div>
 </div>
-<div class="container">
-    <section class="demand-study">
+<section class="demand-study">
+    <div class="container">
         <div class="header">
-            <span style="color: #F15928; text-transform: uppercase;">
-                <span>HỌC TIẾNG TRUNG
-                    <span style="color: #25366a">THEO NHU CẦU CỦA BẠN</span>
+            <a href="{{ route('courses') }}">
+                <span style="color: #F15928; text-transform: uppercase;">
+                    <span>HỌC TIẾNG TRUNG
+                        <span style="color: #25366a">THEO NHU CẦU CỦA BẠN</span>
+                    </span>
                 </span>
-            </span>
+            </a>
         </div>
-        <div class="content">
-            <div>
-                <img src="{{ asset('theme_client/images/demand/2.png') }}" />
-                <div class="card-label">DU HỌC/DỊCH</div>
+        <div class="video-grid">
+            @foreach($courses as $course)
+            <div class="video-item">
+                <a href="{{ route('courses-detail', $course->slug) }}"><img src="{{ asset($course->avatar) }}" /></a>
+                <div class="title">
+                    {{ $course->title }}
+                </div>
+                <div class="desc">{!! $course->description !!}</div>
+                <div class="more-detail">
+                    <a href="{{ route('courses-detail', $course->slug) }}">XEM CHI TIẾT</a>
+                </div>
             </div>
-            <div>
-                <img src="{{ asset('theme_client/images/demand/2.png') }}" />
-                <div class="card-label">NGOẠI NGỮ 2</div>
-            </div>
-            <div>
-                <img src="{{ asset('theme_client/images/demand/2.png') }}" />
-                <div class="card-label">CÔNG VIỆC/KINH DOANH</div>
-            </div>
-    </section>
-</div>
+            @endforeach
+        </div>
+    </div>
+</section>
 <section class="write-words" id="write-words">
     <div class="container">
         <div class="write-words-title">
-            <a href="{{ route('write-words') }}" target="_blank">
+            <a href="{{ route('write-words') }}">
                 <span style="color: #F15928; text-transform: uppercase;">
                     <span>CÁCH VIẾT
                         <span style="color: #25366a">CHỮ HÁN</span>

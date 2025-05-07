@@ -647,7 +647,7 @@
                 @if($course->resources)
                 @foreach(json_decode($course->resources) as $key => $resource)
                 <div class="col-xs-12 col-md-6">
-                    <a target="_blank">
+                    <a>
                         <div class="step-resource-course" onClick="openDocumentLink('{{ $resource->link }}')">
                             <div class="step-number">
                                 @if($key < 9)
