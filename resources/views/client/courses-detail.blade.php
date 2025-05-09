@@ -88,6 +88,13 @@
 
     }
 
+    @media (max-width: 768px) {
+        .documents-list {
+            padding: 0 0 0 20px;
+        }
+
+    }
+
     .bg-tabkhoa {
         background: #eee;
         padding: 50px 0;
@@ -643,7 +650,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-top: 40px">
+            <div class="documents-list row" style="margin-top: 40px">
                 @if($course->resources)
                 @foreach(json_decode($course->resources) as $key => $resource)
                 <div class="col-xs-12 col-md-6">
