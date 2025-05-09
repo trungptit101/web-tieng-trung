@@ -17,7 +17,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $teachers = Teachers::query()->orderBy('created_at', 'DESC')->limit(4)->get();
+        $teachers = Teachers::query()->orderBy('created_at', 'DESC')->get();
         $banners = Banners::query()->get();
         $courses = Courses::query()->get();
         $videosStudent = VideoStudent::query()->orderBy('created_at', 'DESC')->limit(8)->get();
