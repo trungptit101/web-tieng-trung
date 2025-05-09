@@ -22,6 +22,15 @@ class AppServiceProvider extends ServiceProvider
                 'banners' => $banners,
             ]);
         });
+
+        view()->composer('client.layouts.footer', function ($view) {
+            $footers = \DB::table('layouts_footer')
+                ->get();
+
+            $view->with([
+                'footers' => $footers,
+            ]);
+        });
     }
 
     /**

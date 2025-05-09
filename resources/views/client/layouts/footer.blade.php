@@ -71,6 +71,9 @@
     .fanpage-facebook {
         width: 100%;
     }
+    .footer-column a:hover {
+        text-decoration: none !important;
+    }
 </style>
 <div class="footer">
     <div class="footer-container container">
