@@ -123,8 +123,8 @@
                     "previous": "Trước",
                     "next": "Sau"
                 },
-                "lengthMenu": "Hiển thị _MENU_ tin tức trên 1 trang",
-                "emptyTable": "Chưa có tin tức",
+                "lengthMenu": "Hiển thị _MENU_ khoá học trên 1 trang",
+                "emptyTable": "Chưa có khoá học",
                 "info": "Hiển thị _START_ -> _END_ trên _TOTAL_ kết quả",
             }
         });

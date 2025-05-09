@@ -73,6 +73,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('footer.index') }}" class="nav-link {{ Route::is('footer.*')? 'active' : '' }}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Quản Lý Mục Footer
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

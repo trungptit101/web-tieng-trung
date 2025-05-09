@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title','Danh sách đăng ký tư vấn')
+@section('title','Danh mục footer')
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
@@ -21,10 +21,13 @@
                 <div class="col-lg-12">
                     <div class="card card-success card-outline">
                         <div class="card-header">
-                            <h5 class="m-0">Danh sách đăng ký tư vấn</h5>
+                            <h5 class="m-0">Danh mục footer</h5>
                         </div>
                         <div class="row" style="margin-top: 0.5rem; padding: 0 1.3rem;">
                             <div class="col-12" style="text-align: right">
+                                <a href="{{ route('footer.add') }}" class="btn btn-info btn-sm">
+                                    <i class="fas fa-plus"></i> Thêm mới
+                                </a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -33,23 +36,28 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 10px">STT</th>
-                                            <th>Họ tên</th>
-                                            <th>Email</th>
-                                            <th>Số điện thoại</th>
-                                            <th>Khoá học</th>
-                                            <th>Thời gian</th>
+                                            <th>Tiêu đề</th>
+                                            <th></th>
+                                            <th>Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if(!$forms->isEmpty())
-                                        @foreach($forms as $key => $form)
+                                        @if(!$footers->isEmpty())
+                                        @foreach($footers as $key => $footer)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ $form->name }}</td>
-                                            <td>{{ $form->email }}</td>
-                                            <td>{{ $form->phone }}</td>
-                                            <td>{{ $form->course }}</td>
-                                            <td>{{ $form->created_at }}</td>
+                                            <td>{{ $footer->title }}</td>
+                                            <td>
+                                                {!! $footer->description !!}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('footer.detail', $footer->id) }}" class="btn btn-primary btn-xs" title="Sửa">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-xs btn-danger delete" data-link="{{ route('footer.delete', $footer->id) }}" title="Xóa">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                         @endforeach
                                         @else
@@ -105,8 +113,8 @@
                     "previous": "Trước",
                     "next": "Sau"
                 },
-                "lengthMenu": "Hiển thị _MENU_ đăng ký tư vấn trên 1 trang",
-                "emptyTable": "Chưa có đăng ký tư vấn",
+                "lengthMenu": "Hiển thị _MENU_ danh mục trên 1 trang",
+                "emptyTable": "Chưa có danh mục",
                 "info": "Hiển thị _START_ -> _END_ trên _TOTAL_ kết quả",
             }
         });

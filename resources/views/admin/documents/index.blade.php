@@ -21,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="card card-success card-outline">
                         <div class="card-header">
-                            <h5 class="m-0">Danh sách tin tức</h5>
+                            <h5 class="m-0">Danh sách tài liệu</h5>
                         </div>
                         <div class="row" style="margin-top: 0.5rem; padding: 0 1.3rem;">
                             <div class="col-12" style="text-align: right">
@@ -113,8 +113,8 @@
                     "previous": "Trước",
                     "next": "Sau"
                 },
-                "lengthMenu": "Hiển thị _MENU_ tin tức trên 1 trang",
-                "emptyTable": "Chưa có tin tức",
+                "lengthMenu": "Hiển thị _MENU_ tài liệu trên 1 trang",
+                "emptyTable": "Chưa có tài liệu",
                 "info": "Hiển thị _START_ -> _END_ trên _TOTAL_ kết quả",
             }
         });

@@ -10,6 +10,7 @@ use App\Models\VideoStudent;
 use App\Models\CourseTeacher;
 use App\Models\Documents;
 use App\Models\Courses;
+use App\Models\Footer;
 use App\Models\Contact;
 use App\Models\RegisterAdvise;
 use Illuminate\Http\Request;
@@ -21,9 +22,10 @@ class HomeController extends Controller
         $teachers = Teachers::query()->orderBy('created_at', 'DESC')->get();
         $banners = Banners::query()->get();
         $courses = Courses::query()->get();
+        $footers = Footer::query()->get();
         $videosStudent = VideoStudent::query()->orderBy('created_at', 'DESC')->limit(8)->get();
         $page = Pages::Where('slug', 'gioi-thieu-trung-tam-hua-hua')->first();
-        return view('client.home', compact('banners', 'page', 'teachers', 'videosStudent', 'courses'));
+        return view('client.home', compact('banners', 'page', 'teachers', 'videosStudent', 'courses', 'footers'));
     }
 
     public function profile($slug)

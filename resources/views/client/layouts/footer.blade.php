@@ -74,57 +74,15 @@
 </style>
 <div class="footer">
     <div class="footer-container container">
+        @foreach($footers as $footer)
         <div class="footer-column">
-            <h3>EIA CENTER TRÊN FACEBOOK</h3>
+            @if($footer->title)
+            <h3>{{ $footer->title }}</h3>
+            @endif
             <div>
-                <iframe
-                    class="fanpage-facebook"
-                    src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/hannguhuahualmh"
-                    style="border:none;overflow:hidden"
-                    scrolling="no" frameborder="0" allowfullscreen="true"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                </iframe>
+                {!! $footer->description !!}
             </div>
         </div>
-        <div class="footer-column">
-            <div class="social-network-title">
-                <img style="width: 100px; border-radius: 50%" src="{{ asset('/theme_client/images/logo.jpg') }}">
-                <h3>SOCIAL NETWORKS</h3>
-            </div>
-        </div>
-        <div class="footer-column">
-            <h3>EIA CENTER</h3>
-            <div>
-                Trung tâm tiếng Trung Hua Hua tự hào là địa chỉ uy tín dành cho những ai đang theo đuổi hành trình chinh phục tiếng Trung.
-                Với đội ngũ giáo viên bản ngữ và Việt Nam giàu kinh nghiệm, phương pháp giảng dạy trực quan, sinh động, chúng tôi mang đến môi trường học tập chất lượng – hiệu quả – truyền cảm hứng.
-            </div>
-        </div>
-        <div class="footer-column">
-            <h3>Tiếng Anh giao tiếp EIA Center</h3>
-            <ul>
-                <li>CS1: Số 19, Đường Phạm Hùng Văn, Thị trấn Đông Hưng, Thái Bình</li>
-                <li>Hotline: 094 123 52 82</li>
-                <li>CS2: Số 28, Đường Agribank Tiền Hưng, Đông Hưng, Thái Bình</li>
-                <li>Hotline: 094 123 52 82</li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Tiếng Anh trẻ em EIA Center</h3>
-            <ul>
-                <li>CS1: Số 19, Đường Phạm Hùng Văn, Thị trấn Đông Hưng, Thái Bình</li>
-                <li>Hotline: 094 123 52 82</li>
-                <li>CS2: Số 28, Đường Agribank Tiền Hưng, Đông Hưng, Thái Bình</li>
-                <li>Hotline: 094 123 52 82</li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Hệ thống luyện thi IELTS EIA</h3>
-            <ul>
-                <li>CS1: Số 19, Đường Phạm Hùng Văn, Thị trấn Đông Hưng, Thái Bình</li>
-                <li>Hotline: 094 123 52 82</li>
-                <li>CS2: Số 28, Đường Agribank Tiền Hưng, Đông Hưng, Thái Bình</li>
-                <li>Hotline: 094 123 52 82</li>
-            </ul>
-        </div>
+        @endforeach
     </div>
 </div>

@@ -104,5 +104,15 @@ Route::group(
             Route::get('/detail', 'Admin\DashboardController@detailContact')->name('detail');
             Route::post('/detail', 'Admin\DashboardController@updateContact')->name('update');
         });
+
+        // footer
+        Route::group(['prefix' => 'footer', 'as' => 'footer.'], function () {
+            Route::get('/index', 'Admin\FooterController@index')->name('index');
+            Route::get('/add', 'Admin\FooterController@add')->name('add');
+            Route::post('/add', 'Admin\FooterController@addNew')->name('add');
+            Route::get('/detail/{id}', 'Admin\FooterController@detail')->name('detail');
+            Route::post('/delete/{id}', 'Admin\FooterController@delete')->name('delete');
+            Route::post('/detail/{id}', 'Admin\FooterController@update')->name('update');
+        });
     }
 );
