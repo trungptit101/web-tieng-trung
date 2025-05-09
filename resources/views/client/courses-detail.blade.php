@@ -96,7 +96,6 @@
     .nav-tabs {
         background: #ffffff;
         border: none !important;
-        height: 58px;
     }
 
     button:focus {
@@ -252,6 +251,7 @@
 
     .bg-khoa {
         background: url("../theme_client/images/khoa-hoc.png");
+        padding-bottom: 40px;
     }
 
     .title-khai-giang {
@@ -377,7 +377,7 @@
                     </h2>
                 </div>
                 <div>
-                    <img src="https://trungtamtiengtrung.edu.vn/uploads/khoa-hoc/2021_04/tap-the-trung-1.png" alt="khoa-hoc">
+                    <img src="{{ asset('/theme_client/images/tap-the-trung-1.png') }}" alt="khoa-hoc" style="max-width: 100%;">
                 </div>
             </div>
         </div>

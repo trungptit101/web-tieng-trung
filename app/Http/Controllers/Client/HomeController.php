@@ -8,6 +8,7 @@ use App\Models\Pages;
 use App\Models\Teachers;
 use App\Models\VideoStudent;
 use App\Models\CourseTeacher;
+use App\Models\Documents;
 use App\Models\Courses;
 use App\Models\Contact;
 use App\Models\RegisterAdvise;

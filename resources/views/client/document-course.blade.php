@@ -10,7 +10,7 @@
     .document-course {
         border: 2px dashed #ccc;
         border-radius: 10px;
-        padding: 10px;
+        padding: 10px 30px;
     }
     .header {
         font-size: 28px;
