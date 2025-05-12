@@ -161,10 +161,10 @@
             margin: 10px;
         }
 
-        #hanzi-writer {
+        /* #hanzi-writer {
             width: 250px;
             height: 250px;
-        }
+        } */
 
         .hanzi-container h2 {
             font-size: 20px;
