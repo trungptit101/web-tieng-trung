@@ -49,6 +49,7 @@
             padding: 12px !important;
         }
 
+        .swiper-button-prev,
         .swiper-button-next {
             display: none;
         }
@@ -396,8 +397,6 @@
     }
 
     .video-item {
-        background: #fff;
-        padding: 10px;
         border-radius: 12px;
     }
 
@@ -480,16 +479,20 @@
 
     .swiper-button-next,
     .swiper-button-next-teacher,
+    .swiper-button-next-video,
     .swiper-button-prev,
-    .swiper-button-prev-teacher {
+    .swiper-button-prev-teacher,
+    .swiper-button-prev-video {
         color: #F15928;
         transition: color 0.3s ease;
     }
 
     .swiper-button-next:hover,
     .swiper-button-next-teacher:hover,
+    .swiper-button-next-video:hover,
     .swiper-button-prev:hover,
-    .swiper-button-prev-teacher:hover {
+    .swiper-button-prev-teacher:hover,
+    .swiper-button-prev-video:hover {
         color: #F15928;
     }
 
@@ -504,7 +507,8 @@
     }
 
     .swiper-button-next,
-    .swiper-button-next-teacher {
+    .swiper-button-next-teacher,
+    .swiper-button-next-video {
         color: #F15928;
         width: 50px;
         font-weight: bold;
@@ -521,6 +525,43 @@
         height: 50px;
         top: 50%;
         left: -50px;
+    }
+
+    .swiper-grid-column>.swiper-wrapper {
+        flex-direction: column;
+    }
+
+    .swiper-grid-column>.swiper-wrapper>.swiper-slide {
+        margin-bottom: 20px;
+    }
+
+    .swiper-pagination {
+        position: relative;
+        margin-top: 20px;
+    }
+
+    /* Responsive cho desktop (2 hàng x 3 cột) */
+    @media (min-width: 1024px) {
+        .swiper {
+            --swiper-slides-per-view: 3;
+            --swiper-slides-per-group: 3;
+        }
+    }
+
+    /* Responsive cho tablet (4 video, 2x2) */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .swiper {
+            --swiper-slides-per-view: 2;
+            --swiper-slides-per-group: 2;
+        }
+    }
+
+    /* Responsive cho mobile (2 video, 1x2) */
+    @media (max-width: 767px) {
+        .swiper {
+            --swiper-slides-per-view: 1;
+            --swiper-slides-per-group: 1;
+        }
     }
 </style>
 @endsection
@@ -567,23 +608,10 @@
 </div>
 @endif
 
-<div class="container">
+<div class="container container-mobile">
     <a href="{{ route('list-teachers') }}" class="title-list-teacher">
         <div class="section-title">20+ <span style="color: #25366a">GIÁO VIÊN TÀI NĂNG TÂM HUYẾT</span></div>
     </a>
-
-    <!-- <div class="teacher-container">
-        @foreach($teachers as $teacher)
-        <div class="teacher-card" onClick="openProfileTeacher('{{ $teacher->slug }}')">
-            <img src="{{ $teacher->avatar }}" alt="{{ $teacher->userName }}" class="teacher-image">
-            <div class="teacher-name">{{ $teacher->userName }}</div>
-            <div class="teacher-info">
-                {!! $teacher->skills !!}
-            </div>
-        </div>
-        @endforeach
-    </div> -->
-
     <div style="position: relative;">
         <div class="swiper swiper-teacher">
             <div class="swiper-wrapper">
@@ -605,21 +633,44 @@
     </div>
 </div>
 <div class="video-section-container">
-    <div class="container">
+    <div class="container container-mobile">
         <section class="video-section">
             <a href="{{ route('studentTalkAbout') }}">
                 <div class="video-title">HƠN <span class="highlight">100.000+</span> HỌC VIÊN TIN TƯỞNG LỰA CHỌN</div>
             </a>
-            <div class="video-fixed-grid">
+            <!-- <div class="video-fixed-grid">
                 @foreach($videosStudent as $video)
                 <div class="video-item"><iframe src="{{ $video->video }}" allowfullscreen></iframe></div>
                 @endforeach
+            </div> -->
+
+            <div style="position: relative;">
+                <div class="swiper swiper-videos">
+                    <div class="swiper-wrapper">
+                        @foreach($videosStudent as $video)
+                        <div class="swiper-slide">
+                            <div class="video-item">
+                                <iframe src="{{ $video->video }}" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        @endforeach
+                        @foreach($videosStudent as $video)
+                        <div class="swiper-slide">
+                            <div class="video-item">
+                                <iframe src="{{ $video->video }}" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="swiper-button-prev swiper-button-prev-video"></div>
+                <div class="swiper-button-next swiper-button-next-video"></div>
             </div>
         </section>
     </div>
 </div>
 <section class="demand-study">
-    <div class="container">
+    <div class="container container-mobile">
         <div class="header">
             <a href="{{ route('courses') }}">
                 <span style="color: #F15928; text-transform: uppercase;">
@@ -684,6 +735,40 @@
 @section('script')
 <script src="{{ asset('/theme_client/swiper-bundle.min.js') }}"></script>
 <script>
+    const swiper = new Swiper('.swiper-videos', {
+        loop: true,
+        slidesPerGroup: 1,
+        grid: {
+            rows: 2,
+            fill: 'row',
+        },
+        spaceBetween: 20,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next-video',
+            prevEl: '.swiper-button-prev-video',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                grid: {
+                    rows: 2,
+                },
+            },
+            1024: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+                grid: {
+                    rows: 2,
+                },
+            },
+        },
+    });
+
     const swiperTeacher = new Swiper('.swiper-teacher', {
         loop: true,
         spaceBetween: 20,
