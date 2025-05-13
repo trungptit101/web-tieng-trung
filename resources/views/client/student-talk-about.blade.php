@@ -37,6 +37,27 @@
         border: none;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+        .video-fixed-grid {
+            grid-template-columns: repeat(2, 1fr);
+            /* 2 cột trên tablet */
+            grid-template-rows: repeat(2, auto);
+            /* Giữ 2 hàng */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .video-fixed-grid {
+            grid-template-columns: 1fr;
+            /* 1 cột trên mobile */
+            grid-template-rows: repeat(2, auto);
+            /* Giữ 2 hàng */
+            padding: 0 10px;
+            /* Giảm padding trên mobile */
+        }
+    }
 </style>
 @endsection
 @section('main')

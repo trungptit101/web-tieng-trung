@@ -22,7 +22,7 @@ class HomeController extends Controller
         $teachers = Teachers::query()->orderBy('created_at', 'DESC')->get();
         $banners = Banners::query()->get();
         $courses = Courses::query()->get();
-        $videosStudent = VideoStudent::query()->orderBy('created_at', 'DESC')->limit(8)->get();
+        $videosStudent = VideoStudent::query()->orderBy('created_at', 'DESC')->get();
         $page = Pages::Where('slug', 'gioi-thieu-trung-tam-hua-hua')->first();
         return view('client.home', compact('banners', 'page', 'teachers', 'videosStudent', 'courses'));
     }
