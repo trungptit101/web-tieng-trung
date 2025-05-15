@@ -90,6 +90,65 @@
 <script type="text/javascript">
     CKEDITOR.replace('description', {
         height: 400,
+        toolbar: [{
+                name: 'document',
+                items: ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']
+            },
+            {
+                name: 'clipboard',
+                items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']
+            },
+            {
+                name: 'editing',
+                items: ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt']
+            },
+            {
+                name: 'forms',
+                items: ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField']
+            },
+            '/',
+            {
+                name: 'basicstyles',
+                items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']
+            },
+            {
+                name: 'paragraph',
+                items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
+            },
+            {
+                name: 'links',
+                items: ['Link', 'Unlink', 'Anchor']
+            },
+            {
+                name: 'insert',
+                items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']
+            },
+            '/',
+            {
+                name: 'styles',
+                items: ['Styles', 'Format', 'Font', 'FontSize']
+            },
+            {
+                name: 'colors',
+                items: ['TextColor', 'BGColor']
+            },
+            {
+                name: 'tools',
+                items: ['Maximize', 'ShowBlocks']
+            },
+            {
+                name: 'others',
+                items: ['-']
+            },
+            {
+                name: 'about',
+                items: ['About']
+            }
+        ],
+        fontSize_sizes: '8/8px;9/9px;10/10px;11/11px;12/12px;14/14px;16/16px;18/18px;20/20px;22/22px;24/24px;26/26px;28/28px;36/36px;48/48px;72/72px',
+        language: 'vi',
+        extraPlugins: 'colorbutton,colordialog,font,justify,uploadimage,image2',
+        allowedContent: true,
         filebrowserBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html?type=Images',
         filebrowserFlashBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html?type=Flash',
