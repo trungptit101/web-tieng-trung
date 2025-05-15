@@ -225,6 +225,7 @@
                 strokeHighlightSpeed: 2,
                 drawingWidth: 40,
                 strokeColor: '#f05a22', // Màu đỏ cho tất cả các nét
+                outlineColor: '#000',
                 onLoadCharDataSuccess: (data) => {
                     const totalStrokes = data.strokes.length;
                     writer.strokeColors = Array(totalStrokes).fill('#f05a22'); // Đặt tất cả nét thành màu đỏ
