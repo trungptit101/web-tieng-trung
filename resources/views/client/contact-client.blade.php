@@ -33,12 +33,12 @@
         margin: 5px auto;
     }
 
-    .detail-center h2 {
+    /* .detail-center h2 {
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 30px;
         text-transform: uppercase;
-    }
+    } */
 </style>
 @endsection
 @section('main')
