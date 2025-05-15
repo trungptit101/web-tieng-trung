@@ -58,7 +58,7 @@
 @endsection
 @section('js')
 <script type="text/javascript">
-    CKEDITOR.replace('content', {
+    CKEDITOR.replace('contact', {
         height: 500,
         filebrowserBrowseUrl: '/theme_admin/vendor/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: '/theme_admin/vendor/ckfinder/ckfinder.html?type=Images',
