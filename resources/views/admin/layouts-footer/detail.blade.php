@@ -77,7 +77,7 @@
         filebrowserBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html?type=Images',
         filebrowserFlashBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html?type=Flash',
-        filebrowserUploadUrl: '/pulic/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserUploadUrl: '/public/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
         filebrowserImageUploadUrl: '/public/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
         filebrowserFlashUploadUrl: '/public/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
     });

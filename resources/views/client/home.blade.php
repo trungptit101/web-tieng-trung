@@ -344,8 +344,8 @@
     }
 
     #hanzi-writer {
-        width: 300px;
-        height: 300px;
+        width: 400px;
+        height: 400px;
         margin: 20px auto;
         border: 1px solid #ddd;
         border-radius: 5px;
@@ -724,7 +724,7 @@
         </div>
         <div id="hanzi-writer"></div>
         <div class="controls">
-            <!-- <button onclick="animateCharacter()">XEM HOẠT ẢNH</button> -->
+            <button onclick="animateCharacter()">XEM LẠI</button>
             <button onclick="practiceCharacter()">LUYỆN VIẾT</button>
         </div>
     </div>
@@ -847,8 +847,8 @@
             writer.setCharacter(currentCharacter);
         } else {
             writer = HanziWriter.create('hanzi-writer', currentCharacter, {
-                width: 300,
-                height: 300,
+                width: 400,
+                height: 400,
                 padding: 5,
                 showOutline: true,
                 strokeAnimationSpeed: 1,

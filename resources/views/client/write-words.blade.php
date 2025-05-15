@@ -192,7 +192,7 @@
         </div>
         <div id="hanzi-writer"></div>
         <div class="controls">
-            <!-- <button onclick="animateCharacter()">XEM HOẠT ẢNH</button> -->
+            <button onclick="animateCharacter()">XEM LẠI</button>
             <button onclick="practiceCharacter()">LUYỆN VIẾT</button>
         </div>
     </div>
