@@ -2,6 +2,9 @@
 @section('title', 'Giới thiệu trung tâm HUA HUA')
 @section('css')
 <style>
+    .carousel-container {
+        display: none;
+    }
     .detail-center-container {
         background-color: #f2f2f2;
     }
@@ -59,7 +62,7 @@
                     allowfullscreen>
                 </iframe>
             </div>
-            <div style="margin-top: 30px">{!! $page->content !!}</div>
+            <div style="margin-top: 30px; text-align: justify;">{!! $page->content !!}</div>
         </section>
     </div>
 </div>

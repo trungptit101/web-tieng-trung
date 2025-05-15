@@ -2,6 +2,9 @@
 @section('title', 'Trang giới thiệu')
 @section('css')
 <style>
+    .carousel-container {
+        display: none;
+    }
     .teacher-section {
         background-color: #f2f2f2;
     }

@@ -2,7 +2,7 @@
     <div class="container header-client">
         <div class="logo">
             <a href="/">
-                <img src="{{ asset('/theme_client/images/logo.jpg') }}">
+                <img src="{{ asset('/theme_client/images/logo_no_background.png') }}">
             </a>
         </div>
         <nav>
@@ -32,12 +32,44 @@
     </div>
 </div>
 
+<div class="banner-background">
+    Biết thêm một ngôn ngữ là sống thêm một cuộc đời
+</div>
+
 <style>
     header {
         position: sticky;
         top: 0px;
         background: white;
         z-index: 999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .banner-background {
+        background: #f05a22;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        font-size: 38px;
+        font-weight: bold;
+        padding: 0 15px;
+    }
+
+    @media (max-width: 1024px) {
+        .banner-background {
+            height: 165px;
+            font-size: 30px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .banner-background {
+            height: 150px;
+            font-size: 24px;
+        }
     }
 
     .carousel-container {

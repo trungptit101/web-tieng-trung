@@ -2,6 +2,10 @@
 @section('title', 'Khoá học')
 @section('css')
 <style>
+    .carousel-container {
+        display: none;
+    }
+
     .list-course-container {
         /* background: url("./theme_client/images/bg-courses.png"); */
         background-color: #f2f2f2;
@@ -126,9 +130,9 @@
     <div class="container">
         <section class="list-course">
             <div class="header">
-                <span style="color: #F15928; text-transform: uppercase;">
+                <span style="color: #25366a; text-transform: uppercase;">
                     <span>HỌC TIẾNG TRUNG
-                        <span style="color: #25366a">THEO NHU CẦU CỦA BẠN</span>
+                        <span style="color: #F15928">THEO NHU CẦU CỦA BẠN</span>
                     </span>
                 </span>
             </div>

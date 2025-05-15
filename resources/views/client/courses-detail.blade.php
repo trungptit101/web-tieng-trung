@@ -6,13 +6,18 @@
         display: none;
     }
 
+    .banner-background {
+        display: none !important;
+    }
+
     #header-kh {
-        background: url("../theme_client/images/khoa-hoc.png");
+        /* background: url("../theme_client/images/khoa-hoc.png"); */
+        background: #dd5704;
         background-size: 100%;
     }
 
     .course-detail-banner {
-        padding-top: 30px;
+        padding-top: 10px;
     }
 
     .text-tr {
@@ -103,6 +108,7 @@
     .nav-tabs {
         background: #ffffff;
         border: none !important;
+        font-size: 20px;
     }
 
     button:focus {
@@ -155,7 +161,7 @@
 
     .tab-pane ul li {
         line-height: 30px;
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .tab-pane ul li i {
@@ -164,7 +170,8 @@
     }
 
     .bg-tvh {
-        background: url("../theme_client/images/khoa-hoc.png");
+        /* background: url("../theme_client/images/khoa-hoc.png"); */
+        background: #dd5704;
         margin-bottom: 40px;
     }
 
@@ -257,7 +264,8 @@
     }
 
     .bg-khoa {
-        background: url("../theme_client/images/khoa-hoc.png");
+        /* background: url("../theme_client/images/khoa-hoc.png"); */
+        background: #dd5704;
         padding-bottom: 40px;
     }
 
@@ -319,7 +327,8 @@
     .resource-document-left {
         display: flex;
         align-items: center;
-        background: url("../theme_client/images/khoa-hoc.png");
+        /* background: url("../theme_client/images/khoa-hoc.png"); */
+        background: #dd5704;
     }
 
     .resource-document-title {
@@ -339,6 +348,7 @@
 
     .resource-document-right .desc {
         font-weight: 600;
+        color: #000;
     }
 
     .step-resource-course {
@@ -363,25 +373,71 @@
         color: #fff;
         font-size: 24px;
     }
+
+    .title-course {
+        color: #ff0;
+        font-weight: bold;
+        font-size: 46px;
+    }
+
+    .category-course {
+        margin-top: 15px;
+        font-size: 36px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .desc {
+        font-weight: 600;
+        color: #fff;
+        font-size: 22px;
+        padding: 0 20%;
+    }
+
+    @media (max-width: 1024px) {
+        .title-course {
+            font-size: 38px;
+        }
+
+        .category-course {
+            font-size: 30px;
+        }
+
+        .desc {
+            font-size: 20px;
+            padding: 0 10%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .title-course {
+            font-size: 30px;
+        }
+
+        .category-course {
+            font-size: 26px;
+        }
+
+        .desc {
+            font-size: 16px;
+            padding: 0;
+        }
+    }
 </style>
 @endsection
 @section('main')
 <div id="header-kh">
     <div class="container">
         <div class="course-detail-banner">
-            <h1 class="text-center" style="margin-top: 15px; font-size: 36px; font-weight: bold; color: #fff;">
+            <div class="text-center category-course">
                 KHOÁ HỌC TIẾNG TRUNG
-            </h1>
-            <h1 class="text-center" style="color: #ff0; font-weight: bold; font-size: 60px; padding: 16px 0 0;">
+            </div>
+            <div class="text-center title-course">
                 {{ $course->title }}
-            </h1>
+            </div>
             <div class="text-center desc">
-                <div class="box-title">
-                    <h2 class="no-mar normal">
-                        <div class="text-tr">
-                            Khóa học tiếng Trung HSK3 / HSKK chuyên về giao tiếp dành cho người mới bắt đầu, giúp bạn hoàn thiện 4 kỹ năng NGHE - NÓI - ĐỌC - VIẾT cơ bản tạo nên tảng vững chắc để học lên trình độ HSK4
-                        </div>
-                    </h2>
+                <div class="normal">
+                    Khóa học tiếng Trung HSK3 / HSKK chuyên về giao tiếp dành cho người mới bắt đầu, giúp bạn hoàn thiện 4 kỹ năng NGHE - NÓI - ĐỌC - VIẾT cơ bản tạo nên tảng vững chắc để học lên trình độ HSK4
                 </div>
                 <div>
                     <img src="{{ asset('/theme_client/images/tap-the-trung-1.png') }}" alt="khoa-hoc" style="max-width: 100%;">
@@ -401,7 +457,7 @@
                     <div class="title-step">
                         UY TÍN LÂU NĂM
                     </div>
-                    <div class="pd-lr-10">Trung tâm tiếng Trung SOFL hoạt động từ năm 2008 là đơn vị tiên phong trong lĩnh vực đào tạo tiếng Trung cho người Việt.</div>
+                    <div class="pd-lr-10" style="font-weight: bold;">Trung tâm tiếng Trung SOFL hoạt động từ năm 2008 là đơn vị tiên phong trong lĩnh vực đào tạo tiếng Trung cho người Việt.</div>
                     <div class="clear"></div>
                 </div>
                 <div class="col-xs-12 col-sm-4 text-center step">
@@ -411,7 +467,7 @@
                     <div class="title-step">
                         ĐỘI NGŨ GIẢNG VIÊN GIỎI
                     </div>
-                    <div class="desc">100% đội ngũ giáo viên đều có bằng chứ chỉ HSK 5 trở lên, là cử nhân của các trường đại học lớn, kinh nghiệm giảng dạy trên 3 năm.</div>
+                    <div class="pd-lr-10" style="font-weight: bold;">100% đội ngũ giáo viên đều có bằng chứ chỉ HSK 5 trở lên, là cử nhân của các trường đại học lớn, kinh nghiệm giảng dạy trên 3 năm.</div>
                     <div class="clear"></div>
                 </div>
                 <div class="col-xs-12 col-sm-4 text-center step">
@@ -421,7 +477,7 @@
                     <div class="title-step">
                         PHƯƠNG PHÁP TỐI ƯU
                     </div>
-                    <div class="desc">Lộ trình học chuẩn quốc tế, xây dựng các giờ học tập chung và các hoạt động học bằng hình ảnh, âm thanh kết hợp trò chơi.</div>
+                    <div class="pd-lr-10" style="font-weight: bold;">Lộ trình học chuẩn quốc tế, xây dựng các giờ học tập chung và các hoạt động học bằng hình ảnh, âm thanh kết hợp trò chơi.</div>
                     <div class="clear"></div>
                 </div>
             </div>
@@ -450,91 +506,12 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="infomation-course">
                 {!! $course->infomationCourse !!}
-                <!-- <ul>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:18px">
-                            <strong>Tên khóa học</strong> : Tiếng Trung HSK3/HSKK
-                        </span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:18px">
-                            <strong>Giáo trình</strong>: Boya 1
-                        </span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:18px">
-                            <strong>Ca học :</strong>Sáng / chiều / tối
-                        </span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:18px"><strong>Số buổi :</strong>50 buổi = 2 giờ học/buổi; Tuần học 3 buổi
-                        </span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:18px"><strong>Thời gian :</strong> Thời gian học 4 tháng
-                        </span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:18px"><strong>Học viên mỗi lớp :</strong> 20 -<strong>
-                            </strong>25 Học viên/lớp
-                        </span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:18px"><strong>Đối tượng học viên:</strong>&nbsp;Người mới bắt đầu học tiếng Trung;
-                        </span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:18px"><strong>Địa điểm :</strong>Tại các cơ sở học tập của SOFL tại Hà Nội và TP.HCM</span>
-                    </li>
-                </ul> -->
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="course-output">
                 {!! $course->outputCourse !!}
-                <!-- <ul>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:16px">Tích lũy 600 từ vựng và 75 cấu trúc ngữ pháp trình độ cơ bản đến HSK3</span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:16px">
-                            Tiếng Trung 4 kỹ năng : <span style="color:rgb(255, 140, 0)"><strong>Nghe - Nói - Đọc - Viết</strong></span>
-                        </span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:16px">Có thể nghe hiểu và giao tiếp các câu phức, đoạn hội thoại ở mức khá</span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:16px">Bày tỏ suy nghĩ, kể lại những chuyện xảy ra xung quanh bằng tiếng Trung</span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span style="font-size:16px">Đã có thể tự đi du lịch, tự nhập hàng Trung Quốc</span>
-                    </li>
-                    <li>
-                        <i class="fa fa-check-circle-o"></i>
-                        <strong><span style="color:rgb(255, 140, 0)"><span style="font-size:16px">Cam kết đầu ra HSK3/HSK6 ►Thi đỗ HSK 3 > 210đ</span></span></strong>
-                    </li>
-                </ul> -->
             </div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="student-rights">
                 {!! $course->interestCourse !!}
-                <!-- <div id="quyen-loi-hoc-vien-269" class="tabcontentkh" style="display: block;">
-                    <p><strong>CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO 50 SLOT ĐĂNG KÝ ĐẦU TIÊN:</strong></p>
-                    <p><strong>- GIẢM 55% HỌC PHÍ KHOÁ HỌC</strong></p>
-                    <p><strong>- GIẢM THÊM 300K KHI ĐĂNG KÝ NHÓM 2 NGƯỜI TRỞ LÊN</strong></p>
-                    <p><strong>ÁP DỤNG ĐĂNG KÝ TRÊN&nbsp;TOÀN HỆ THỐNG CƠ SỞ ĐÀO TẠO CỦA TRUNG TÂM SOFL</strong></p>
-                </div> -->
             </div>
         </div>
     </div>
@@ -586,16 +563,6 @@
                                         </span>
                                     </div>
                                 </div>
-                                <!-- <div class="">
-                                    <div class="form-group ">
-                                        <i class="fa  fa-map-marker"></i>
-                                        <span class="form-1">
-                                            <select class="form-control" name="branch_id" id="coso" required="" placeholder="Cơ sở gần bạn nhất">
-                                                <option>Cơ sở gần bạn nhất</option>
-                                            </select>
-                                        </span>
-                                    </div>
-                                </div> -->
                                 <button class="btn-register" type="submit">Đăng kí tư vấn </button>
                             </form>
                         </div>

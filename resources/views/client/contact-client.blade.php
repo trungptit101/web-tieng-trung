@@ -2,6 +2,10 @@
 @section('title', 'Liên hệ')
 @section('css')
 <style>
+    .carousel-container {
+        display: none;
+    }
+
     .detail-center-container {
         background-color: #f2f2f2;
     }

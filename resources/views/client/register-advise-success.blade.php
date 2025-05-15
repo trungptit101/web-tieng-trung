@@ -2,6 +2,9 @@
 @section('title', 'Đăng ký tư vấn thành công')
 @section('css')
 <style>
+    .carousel-container {
+        display: none;
+    }
     .register-advise-success {
         padding: 40px 0 0 0;
         text-align: center;
@@ -19,7 +22,7 @@
             <img class="img" src="{{ asset('/theme_client/images/cam-on-sofl.jpg') }}" />
         </div>
         <div style="padding: 20px; font-weight: bold;">
-            <a href="/" style="color: #F15928; text-decoration: none; font-size">Quay về trang chủ</a>
+            <a href="/" style="color: #F15928; text-decoration: none">Quay về trang chủ</a>
         </div>
     </div>
 </div>

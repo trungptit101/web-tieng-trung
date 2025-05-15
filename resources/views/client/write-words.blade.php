@@ -2,6 +2,10 @@
 @section('title', 'Cách viết chữ Hán')
 @section('css')
 <style>
+    .carousel-container {
+        display: none;
+    }
+
     .write-words {
         background-color: #f2f2f2;
         padding-bottom: 30px;
@@ -10,7 +14,6 @@
     .write-words .write-words-title {
         font-size: 24px;
         font-weight: bold;
-        color: #F15928;
         padding: 30px 0;
         text-align: center;
     }
@@ -37,8 +40,6 @@
     .write-words .logo {
         width: 100px;
         height: 100px;
-        background-color: #ff4600;
-        border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -175,10 +176,16 @@
 @section('main')
 <section class="write-words" id="write-words">
     <div class="container">
-        <div class="write-words-title">CÁCH VIẾT CHỮ HÁN</div>
+        <div class="write-words-title">
+            <span style="color: #25366a; text-transform: uppercase;">
+                <span>CÁCH VIẾT
+                    <span style="color: #F15928">CHỮ HÁN</span>
+                </span>
+            </span>
+        </div>
         <div class="content">
             <div class="search-container">
-                <img class="logo" src="{{ asset('/theme_client/images/logo.jpg') }}">
+                <img class="logo" src="{{ asset('/theme_client/images/logo_no_background.png') }}">
                 <input type="text" id="hanzi-input" placeholder="Nhập ký tự Hán (e.g., 髦)" maxlength="1">
                 <button onclick="loadCharacter()">HIỂN THỊ</button>
             </div>

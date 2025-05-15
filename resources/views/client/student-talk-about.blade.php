@@ -2,6 +2,9 @@
 @section('title', 'Học viên nói gì về chúng tôi')
 @section('css')
 <style>
+    .carousel-container {
+        display: none;
+    }
     .video-section-container {
         background-image: url('theme_client/images/Layer-11-1.jpg');
         background-size: cover !important;
@@ -15,11 +18,11 @@
         padding: 30px 0;
         font-size: 24px;
         text-align: center;
-        color: #25366a;
+        color: #F15928;
     }
 
     .video-section .video-title .highlight {
-        color: #F15928 !important;
+        color: #25366a !important;
     }
 
     .video-fixed-grid {

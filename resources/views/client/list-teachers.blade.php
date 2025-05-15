@@ -2,6 +2,10 @@
 @section('title', 'Giáo viên tài năng tâm huyết')
 @section('css')
 <style>
+    .carousel-container {
+        display: none;
+    }
+
     .list-teachers-container {
         background-color: #f2f2f2;
     }
@@ -14,7 +18,7 @@
     .list-teachers-container .section-title {
         font-size: 30px;
         font-weight: bold;
-        color: #f05a22;
+        color: #25366a;
         padding: 30px 0;
         text-align: center;
         text-transform: uppercase;
@@ -89,7 +93,7 @@
 @section('main')
 <div class="list-teachers-container">
     <div class="container">
-        <div class="section-title">20+ <span style="color: #25366a">GIÁO VIÊN TÀI NĂNG TÂM HUYẾT</span></div>
+        <div class="section-title">20+ <span style="color: #f05a22">GIÁO VIÊN TÀI NĂNG TÂM HUYẾT</span></div>
 
         <div class="list-teachers">
             @foreach($teachers as $teacher)

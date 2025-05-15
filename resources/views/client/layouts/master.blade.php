@@ -21,7 +21,7 @@
     <meta property="og:locale" content="vi_VN" />
     <meta property="og:type" content="website" />
 
-    <link rel="icon" type="image/png" href="{{ asset('/theme_client/images/logo.jpg') }}">
+    <link rel="icon" type="image/png" href="{{ asset('/theme_client/images/logo_no_background.png') }}">
 
     <!-- Website Title -->
     <title>@yield('title')</title>
@@ -40,7 +40,6 @@
 
 <body class="page-template ltr">
     <div class="wrapper home-page" id="app">
-        <div class="custom-cursor"></div>
         @include('client.layouts.header')
         <div class="page-section">
             @yield('main')
@@ -52,37 +51,6 @@
     @yield('script')
 </body>
 <script>
-    const cursor = document.querySelector('.custom-cursor');
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-    const speed = 0.2;
-
-    function animate() {
-        cursorX += (mouseX - cursorX) * speed;
-        cursorY += (mouseY - cursorY) * speed;
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        requestAnimationFrame(animate);
-    }
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    const links = document.querySelectorAll('.link');
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            cursor.classList.add('hovered');
-        });
-        link.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hovered');
-        });
-    });
-
-    animate();
 </script>
 
 </html>

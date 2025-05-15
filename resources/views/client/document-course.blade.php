@@ -2,6 +2,10 @@
 @section('title', $document->title)
 @section('css')
 <style>
+    .carousel-container {
+        display: none;
+    }
+
     .document-course-container {
         padding: 40px 0;
         margin: 0px auto;
@@ -12,6 +16,7 @@
         border-radius: 10px;
         padding: 10px 30px;
     }
+
     .header {
         font-size: 28px;
         font-weight: bold;
@@ -19,6 +24,7 @@
         text-align: center;
         padding: 15px 0;
     }
+
     .description {
         text-align: center;
     }

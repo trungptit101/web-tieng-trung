@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-info elevation-4">
     <a href="/" class="brand-link" style="text-align: center">
-        <img src="{{ asset('/logo.jpg') }}" style="width: 100%; max-width: 60px; border-radius: 50%">
+        <img src="{{ asset('/logo_no_background.png') }}" style="width: 100%; max-width: 60px">
         HUA HUA
     </a>
 

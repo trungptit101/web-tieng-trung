@@ -3,6 +3,10 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('/theme_client/swiper-bundle.min.css') }}" />
 <style>
+    .banner-background {
+        display: none !important;
+    }
+
     .video-container {
         padding: 60px 0;
         background-color: #f2f2f2;
@@ -57,7 +61,7 @@
 
     .section-title {
         text-align: center;
-        color: #F15928;
+        color: #25366a;
         font-size: 24px;
         font-weight: bold;
         padding: 30px 0;
@@ -126,11 +130,11 @@
         padding: 30px 0;
         font-size: 24px;
         text-align: center;
-        color: #25366a;
+        color: #F15928;
     }
 
     .video-section .video-title .highlight {
-        color: #F15928 !important;
+        color: #25366a !important;
     }
 
     @media (max-width: 480px) {
@@ -206,8 +210,6 @@
     .write-words .logo {
         width: 100px;
         height: 100px;
-        background-color: #ff4500;
-        border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -586,9 +588,9 @@
                     <div class="col-inner text-left">
                         <a href="/gioi-thieu-trung-tam-hua-hua" class="title_introduce">
                             <h2 style="text-align: left;">
-                                <span style="color: #F15928; text-transform: uppercase;">
+                                <span style="color: #25366a; text-transform: uppercase;">
                                     <strong>Giới Thiệu
-                                        <span style="color: #25366a">HUA HUA</span>
+                                        <span style="color: #F15928">HUA HUA</span>
                                     </strong>
                                 </span>
                             </h2>
@@ -610,7 +612,7 @@
 
 <div class="container container-mobile">
     <a href="{{ route('list-teachers') }}" class="title-list-teacher">
-        <div class="section-title">20+ <span style="color: #25366a">GIÁO VIÊN TÀI NĂNG TÂM HUYẾT</span></div>
+        <div class="section-title">20+ <span style="color: #F15928">GIÁO VIÊN TÀI NĂNG TÂM HUYẾT</span></div>
     </a>
     <div style="position: relative;">
         <div class="swiper swiper-teacher">
@@ -638,12 +640,6 @@
             <a href="{{ route('studentTalkAbout') }}">
                 <div class="video-title">HƠN <span class="highlight">100.000+</span> HỌC VIÊN TIN TƯỞNG LỰA CHỌN</div>
             </a>
-            <!-- <div class="video-fixed-grid">
-                @foreach($videosStudent as $video)
-                <div class="video-item"><iframe src="{{ $video->video }}" allowfullscreen></iframe></div>
-                @endforeach
-            </div> -->
-
             <div style="position: relative;">
                 <div class="swiper swiper-videos">
                     <div class="swiper-wrapper">
@@ -673,9 +669,9 @@
     <div class="container container-mobile">
         <div class="header">
             <a href="{{ route('courses') }}">
-                <span style="color: #F15928; text-transform: uppercase;">
+                <span style="color: #25366a; text-transform: uppercase;">
                     <span>HỌC TIẾNG TRUNG
-                        <span style="color: #25366a">THEO NHU CẦU CỦA BẠN</span>
+                        <span style="color: #F15928">THEO NHU CẦU CỦA BẠN</span>
                     </span>
                 </span>
             </a>
@@ -708,16 +704,16 @@
     <div class="container">
         <div class="write-words-title">
             <a href="{{ route('write-words') }}">
-                <span style="color: #F15928; text-transform: uppercase;">
+                <span style="color: #25366a; text-transform: uppercase;">
                     <span>CÁCH VIẾT
-                        <span style="color: #25366a">CHỮ HÁN</span>
+                        <span style="color: #F15928">CHỮ HÁN</span>
                     </span>
                 </span>
             </a>
         </div>
         <div class="content">
             <div class="search-container">
-                <img class="logo" src="{{ asset('/theme_client/images/logo.jpg') }}">
+                <img class="logo" src="{{ asset('/theme_client/images/logo_no_background.png') }}">
                 <input type="text" id="hanzi-input" placeholder="Nhập ký tự Hán (e.g., 髦)" maxlength="1">
                 <button onclick="loadCharacter()">HIỂN THỊ</button>
             </div>

@@ -15,22 +15,8 @@ body {
     cursor: none;
 }
 
-.custom-cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(0, 136, 255, 0.8);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
-    z-index: 9999;
-}
-
-.custom-cursor.hovered {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 105, 180, 0.8);
+body {
+    cursor: url('/panda-emoji.png') 24 24, auto;
 }
 
 .link {
@@ -82,7 +68,6 @@ button:focus-visible {
 }
 
 .header-client .logo img {
-    border-radius: 50%;
     width: 60px;
 }
 

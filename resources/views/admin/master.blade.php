@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     <link href="{{ asset('/theme_admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-    <link rel="icon" href="{{ asset('/theme_client/images/logo.jpg') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('/theme_client/images/logo_no_background.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('/theme_admin/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/theme_admin/css/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/theme_admin/css/jquery-ui.css') }}">
@@ -19,15 +19,15 @@
 
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="Trang chủ">
-    <meta itemprop="image" content="{{ asset('/theme_client/images/logo.jpg') }}">
+    <meta itemprop="image" content="{{ asset('/theme_client/images/logo_no_background.png') }}">
 
     <!-- Facebook Meta Tags -->
     <meta property="og:title" content="Trang chủ">
-    <meta property="og:image" content="{{ asset('/theme_client/images/logo.jpg') }}">
+    <meta property="og:image" content="{{ asset('/theme_client/images/logo_no_background.png') }}">
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:title" content="Trang chủ">
-    <link rel="icon" type="image/png" href="{{ asset('/theme_client/images/logo.jpg') }}">
+    <link rel="icon" type="image/png" href="{{ asset('/theme_client/images/logo_no_background.png') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
