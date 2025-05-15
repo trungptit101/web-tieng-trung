@@ -33,6 +33,13 @@
 </div>
 
 <style>
+    header {
+        position: sticky;
+        top: 0px;
+        background: white;
+        z-index: 999;
+    }
+
     .carousel-container {
         width: 100%;
         margin: 0px auto;
