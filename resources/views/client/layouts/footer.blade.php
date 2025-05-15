@@ -16,6 +16,7 @@
     .footer-column {
         flex: 1;
         min-width: 300px;
+        text-align: justify;
     }
 
     .footer-column h3 {
@@ -71,6 +72,7 @@
     .fanpage-facebook {
         width: 100%;
     }
+
     .footer-column a:hover {
         text-decoration: none !important;
     }

@@ -236,9 +236,11 @@ class DashboardController extends Controller
     public function createVideoStudent(Request $request)
     {
         $rules = [
+            'title' => 'required',
             'video' => 'required',
         ];
         $message = [
+            'title.required' => 'Tiêu đề video không được trống!',
             'video.required' => 'Link video không được trống!',
         ];
 
@@ -248,12 +250,45 @@ class DashboardController extends Controller
         }
         try {
             $video = new VideoStudent();
+            $video->title = $request->input('title');
             $video->video = $request->input('video');
             $video->save();
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(["error" => $e->getMessage()]);
         }
         return redirect()->route('videos.student.index')->with('success', 'Thêm video học viên thành công!');
+    }
+
+    public function detailVideoStudent(Request $request, $id)
+    {
+        $video = VideoStudent::find($id);
+        return view('admin.videos-student.detail', compact('video'));
+    }
+
+    public function updateVideoStudent(Request $request, $id)
+    {
+        $rules = [
+            'title' => 'required',
+            'video' => 'required',
+        ];
+        $message = [
+            'title.required' => 'Tiêu đề video không được trống!',
+            'video.required' => 'Link video không được trống!',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        try {
+            $video = VideoStudent::find($id);
+            $video->title = $request->input('title');
+            $video->video = $request->input('video');
+            $video->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(["error" => $e->getMessage()]);
+        }
+        return redirect()->route('videos.student.index')->with('success', 'Cập nhật video học viên thành công!');
     }
 
     public function listRegister(Request $request)

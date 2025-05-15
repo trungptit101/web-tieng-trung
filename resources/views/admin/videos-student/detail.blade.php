@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title','Thêm video học viên')
+@section('title','Chỉnh sửa video học viên')
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
@@ -25,7 +25,7 @@
                         <div class="card-header">
                             <h5 class="m-0">Thông tin video học viên</h5>
                         </div>
-                        <form class="form-horizontal" enctype="multipart/form-data" method="post" id="courseForm" action="{{ route('videos.student.create') }}">
+                        <form class="form-horizontal" enctype="multipart/form-data" method="post" id="courseForm" action="{{ route('videos.student.update', $video->id) }}">
                             <div class="card-body">
                                 @csrf
                                 <div class="form-group row">
@@ -33,7 +33,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Tiêu đề video">
+                                        <input type="text" value="{{ $video->title }}" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Tiêu đề video">
                                         @error('title')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -44,7 +44,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control @error('video') is-invalid @enderror" name="video" placeholder="link video youtube">
+                                        <input type="text" value="{{ $video->video }}" class="form-control @error('video') is-invalid @enderror" name="video" placeholder="link video youtube">
                                         @error('video')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

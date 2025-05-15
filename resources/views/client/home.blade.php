@@ -565,6 +565,16 @@
             --swiper-slides-per-group: 1;
         }
     }
+
+    .title-video-student {
+        font-size: 16px;
+        font-weight: 600;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-align: center;
+    }
 </style>
 @endsection
 @section('main')
@@ -647,13 +657,7 @@
                         <div class="swiper-slide">
                             <div class="video-item">
                                 <iframe src="{{ $video->video }}" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        @endforeach
-                        @foreach($videosStudent as $video)
-                        <div class="swiper-slide">
-                            <div class="video-item">
-                                <iframe src="{{ $video->video }}" allowfullscreen></iframe>
+                                <div class="title-video-student" title="{{ $video->title }}">{{ $video->title }}</div>
                             </div>
                         </div>
                         @endforeach

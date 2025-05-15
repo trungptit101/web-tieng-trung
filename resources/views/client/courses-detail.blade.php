@@ -391,7 +391,7 @@
         font-weight: 600;
         color: #fff;
         font-size: 22px;
-        padding: 0 20%;
+        padding: 0 10%;
     }
 
     @media (max-width: 1024px) {
@@ -597,7 +597,7 @@
                 <div class="col-xs-12 col-md-6">
                     <img src="{{ asset('theme_client/images/giao-trinh-boya_7_1.jpg') }}" alt="Tài liệu học khóa học HSK 3" style="width: 100%">
                 </div>
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12 col-md-6" style="text-align: justify">
                     {!! $course->descriptionDocument !!}
                 </div>
             </div>
@@ -609,7 +609,7 @@
                 </div>
                 <div class="col-md-8 resource-document-right">
                     <i class="fa fa-quote-left"></i>
-                    <div class="desc">
+                    <div class="desc" style="text-align: justify">
                         {{ $course->quote }}
                     </div>
                     <div class="text-right">

@@ -2,6 +2,10 @@
 @section('title', 'Đăng nhập')
 @section('css')
 <style>
+    .banner-background {
+        display: none !important;
+    }
+
     .carousel-container {
         display: none;
     }

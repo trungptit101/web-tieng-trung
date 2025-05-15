@@ -5,6 +5,7 @@
     .carousel-container {
         display: none;
     }
+
     .teacher-section {
         background-color: #f2f2f2;
     }
@@ -149,6 +150,21 @@
             height: 160px;
         }
     }
+
+    .teacher-detail h4 {
+        color: #F15928;
+        font-weight: bold;
+    }
+
+    .introduce {
+        font-weight: bold;
+        text-align: justify;
+    }
+
+    .skills {
+        font-weight: bold;
+        text-align: justify;
+    }
 </style>
 @endsection
 @section('main')
@@ -161,12 +177,19 @@
             </div>
 
             <div class="teacher-detail">
-                <h4>👩‍🏫 GIÁO VIÊN CHÍNH</h4>
-                <h4>GIỚI THIỆU:</h4>
-                {!! $teacher->introduce !!}
+                <h4>
+                    <span style="color: #25366a;">
+                        <span>Giới Thiệu về
+                            <span style="color: #F15928">{{ $teacher->userName }}</span>
+                        </span>
+                    </span>
+                </h4>
+                <div class="introduce">
+                    {!! $teacher->introduce !!}
+                </div>
 
                 <h4>THÀNH TÍCH:</h4>
-                {!! $teacher->skills !!}
+                <div class="skills">{!! $teacher->skills !!}</div>
             </div>
         </div>
     </div>

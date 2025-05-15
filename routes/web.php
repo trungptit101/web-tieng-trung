@@ -61,6 +61,8 @@ Route::group(
             Route::get('index', 'Admin\DashboardController@listVideosStudent')->name('index');
             Route::get('add', 'Admin\DashboardController@addVideoStudent')->name('add');
             Route::post('add', 'Admin\DashboardController@createVideoStudent')->name('create');
+            Route::get('{id}/detail', 'Admin\DashboardController@detailVideoStudent')->name('detail');
+            Route::post('{id}/detail', 'Admin\DashboardController@updateVideoStudent')->name('update');
             Route::post('delete/{id}', 'Admin\DashboardController@deleteVideoStudent')->name('delete');
         });
 

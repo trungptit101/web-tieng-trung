@@ -40,6 +40,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 10px">STT</th>
+                                            <th>Tiêu đề</th>
                                             <th>Video</th>
                                             <th>Hành động</th>
                                         </tr>
@@ -49,8 +50,12 @@
                                         @foreach($videos as $key => $video)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
+                                            <td>{{ $video->title }}</td>
                                             <td><iframe style="height: 250px; width: 500px" src="{{ $video->video }}" allowfullscreen></iframe></td>
                                             <td>
+                                                <a href="{{ route('videos.student.detail', $video->id) }}" class="btn btn-primary btn-xs" title="Sửa">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
                                                 <button type="button" class="btn btn-xs btn-danger delete" data-link="{{ route('videos.student.delete', $video->id) }}" title="Xóa">
                                                     <i class="fas fa-trash"></i>
                                                 </button>

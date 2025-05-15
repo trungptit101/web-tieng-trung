@@ -5,6 +5,7 @@
     .carousel-container {
         display: none;
     }
+
     .video-section-container {
         background-image: url('theme_client/images/Layer-11-1.jpg');
         background-size: cover !important;
@@ -61,6 +62,16 @@
             /* Giảm padding trên mobile */
         }
     }
+
+    .title {
+        font-size: 16px;
+        font-weight: 600;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-align: center;
+    }
 </style>
 @endsection
 @section('main')
@@ -70,7 +81,10 @@
             <div class="video-title">HƠN <span class="highlight">100.000+</span> HỌC VIÊN TIN TƯỞNG LỰA CHỌN</div>
             <div class="video-fixed-grid">
                 @foreach($videosStudent as $video)
-                <div class="video-item"><iframe src="{{ $video->video }}" allowfullscreen></iframe></div>
+                <div class="video-item">
+                    <iframe src="{{ $video->video }}" allowfullscreen></iframe>
+                    <div class="title" title="{{ $video->title }}">{{ $video->title }}</div>
+                </div>
                 @endforeach
             </div>
         </section>
