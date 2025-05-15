@@ -33,7 +33,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-sm-10">
-                                        <textarea placeholder="Nội dung" id="contact" class="form-control ckeditor contact @error("contact") is-invalid @enderror" name="contact">{{ $contact->contact }}</textarea>
+                                        <textarea placeholder="Nội dung" id="contact" class="form-control ckeditor contact @error(" contact") is-invalid @enderror" name="contact">{{ $contact->contact }}</textarea>
                                         @error("contact")
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -59,13 +59,13 @@
 @section('js')
 <script type="text/javascript">
     CKEDITOR.replace('content', {
-        height: 800,
-        filebrowserBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html',
-        filebrowserImageBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html?type=Images',
-        filebrowserFlashBrowseUrl: '/public/theme_admin/vendor/ckfinder/ckfinder.html?type=Flash',
-        filebrowserUploadUrl: '/public/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-        filebrowserImageUploadUrl: '/public/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-        filebrowserFlashUploadUrl: '/public/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+        height: 500,
+        filebrowserBrowseUrl: '/theme_admin/vendor/ckfinder/ckfinder.html',
+        filebrowserImageBrowseUrl: '/theme_admin/vendor/ckfinder/ckfinder.html?type=Images',
+        filebrowserFlashBrowseUrl: '/theme_admin/vendor/ckfinder/ckfinder.html?type=Flash',
+        filebrowserUploadUrl: '/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl: '/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl: '/theme_admin/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
     });
     CKEDITOR.config.extraPlugins = 'colorbutton';
 </script>
